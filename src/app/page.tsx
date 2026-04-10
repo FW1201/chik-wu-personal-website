@@ -1,65 +1,144 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { motion } from "framer-motion";
+import Link from "next/link";
+import {
+  PenLine,
+  FlaskConical,
+  GraduationCap,
+  Code2,
+  Mic2,
+  BookOpen,
+} from "lucide-react";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Card } from "@/components/ui/Card";
+import { StatCounter } from "@/components/ui/StatCounter";
+import { profile } from "@/data/profile";
+
+const roleIcons: Record<string, React.ReactNode> = {
+  PenLine: <PenLine className="w-6 h-6" />,
+  FlaskConical: <FlaskConical className="w-6 h-6" />,
+  GraduationCap: <GraduationCap className="w-6 h-6" />,
+  Code2: <Code2 className="w-6 h-6" />,
+  Mic2: <Mic2 className="w-6 h-6" />,
+  BookOpen: <BookOpen className="w-6 h-6" />,
+};
+
+const highlights = [
+  {
+    title: "CASLAR 2025 SSCI 論文發表",
+    description: "語料庫語言學研究成果登上國際 SSCI 期刊",
+  },
+  {
+    title: "tw-edu-skills 5\u2B50 7 forks",
+    description: "開源 AI 教育技能包獲社群高度關注",
+  },
+  {
+    title: "134+ 場 AI 教育演講",
+    description: "橫跨全台各級學校與教育機構",
+  },
+  {
+    title: "2025 AI 素養教育論壇策展",
+    description: "策劃並主持大型 AI 教育主題論壇",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center bg-bg-primary px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center max-w-3xl"
+        >
+          <h1 className="font-[family-name:var(--font-playfair)] text-7xl md:text-8xl font-medium text-text-primary leading-none">
+            {profile.name.zh}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-4 text-xl md:text-2xl text-text-secondary tracking-widest">
+            {profile.name.en}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <p className="mt-6 text-lg text-text-tertiary max-w-xl mx-auto">
+            {profile.tagline}
+          </p>
+          <Link
+            href="/contact"
+            className="mt-10 inline-block border border-text-primary text-text-primary px-8 py-3 text-sm tracking-wide hover:bg-text-primary hover:text-text-dark transition-colors duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            邀請演講 &rarr;
+          </Link>
+        </motion.div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="bg-bg-primary border-y border-border-dark py-12 px-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
+          {profile.stats.map((stat) => (
+            <StatCounter
+              key={stat.label}
+              value={stat.value}
+              suffix={stat.suffix}
+              label={stat.label}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Roles Section (Light) */}
+      <section className="bg-bg-light py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <SectionHeading
+            title="六角色工作系統"
+            subtitle="跨領域整合的教育工作者身份"
+            light
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {profile.roles.map((role) => (
+              <Card key={role.id} light>
+                <div className="text-text-dark-secondary mb-4">
+                  {roleIcons[role.icon]}
+                </div>
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-medium text-text-dark">
+                  {role.name}
+                </h3>
+                <p className="text-sm text-text-dark-secondary mt-1">
+                  {role.nameEn}
+                </p>
+                <p className="text-sm text-text-dark-secondary mt-3 leading-relaxed">
+                  {role.description}
+                </p>
+                <p className="mt-4 text-xs font-medium text-text-dark-secondary tracking-wide uppercase border-t border-border-light pt-3">
+                  {role.stat}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Highlights */}
+      <section className="bg-bg-primary py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <SectionHeading
+            title="近期亮點"
+            subtitle="研究、開發與教育推廣的最新成果"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {highlights.map((item) => (
+              <Card key={item.title}>
+                <h3 className="font-[family-name:var(--font-playfair)] text-lg font-medium text-text-primary">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-text-secondary mt-2 leading-relaxed">
+                  {item.description}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
