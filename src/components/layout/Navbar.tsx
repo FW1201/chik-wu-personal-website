@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/projects", label: "氛圍開發專案" },
   { href: "/resources", label: "資源中心" },
   { href: "/contact", label: "邀請演講" },
+  { href: "https://www.tibame.com/teacher/20d3094c", label: "合作課程", external: true },
 ];
 
 export function Navbar() {
@@ -28,17 +29,29 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8">
-          {navLinks.slice(1).map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-opacity hover:opacity-100 ${
-                pathname === link.href ? "opacity-100" : "opacity-60"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.slice(1).map((link) =>
+            "external" in link && link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm opacity-60 hover:opacity-100 transition-opacity"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm transition-opacity hover:opacity-100 ${
+                  pathname === link.href ? "opacity-100" : "opacity-60"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -55,18 +68,31 @@ export function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden border-t border-border-dark bg-bg-primary">
           <div className="px-6 py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm transition-opacity hover:opacity-100 ${
-                  pathname === link.href ? "opacity-100" : "opacity-60"
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              "external" in link && link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm opacity-60 hover:opacity-100 transition-opacity"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm transition-opacity hover:opacity-100 ${
+                    pathname === link.href ? "opacity-100" : "opacity-60"
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
         </div>
       )}

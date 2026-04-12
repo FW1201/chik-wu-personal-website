@@ -55,7 +55,7 @@ export default function ContactPage() {
         style={{
           backgroundImage: "url('/images/contact-hero.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "50% 30%",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/65 to-bg-primary" />

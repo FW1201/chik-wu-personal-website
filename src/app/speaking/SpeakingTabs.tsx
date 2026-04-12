@@ -129,24 +129,30 @@ function TopicEvolutionPanel() {
 
 function MilestonesPanel() {
   return (
-    <div className="relative max-w-2xl">
-      {/* Vertical line */}
-      <div className="absolute left-4 top-0 bottom-0 w-px bg-border-dark" />
-      <div className="flex flex-col gap-8">
+    <div className="overflow-x-auto pb-6">
+      <div className="flex items-start min-w-max">
         {milestones.map((item, i) => (
-          <div key={i} className="relative pl-12">
-            {/* Gold dot */}
-            <div
-              className="absolute left-[10px] top-1.5 w-[10px] h-[10px] rounded-full border-2"
-              style={{ borderColor: "#C9A84C", background: "#0a0a0a" }}
-            />
-            <span className="text-xs text-text-tertiary font-mono">{item.date}</span>
-            <h3 className="font-[family-name:var(--font-playfair)] text-lg font-medium text-text-primary mt-1">
-              {item.title}
-            </h3>
-            <p className="text-sm text-text-secondary mt-1 leading-relaxed">
-              {item.description}
-            </p>
+          <div key={i} className="flex flex-col items-center" style={{ width: "13rem" }}>
+            {/* Card */}
+            <div className="border border-border-dark bg-bg-card rounded-xl p-4 w-full mb-4 mx-2">
+              <span className="text-xs text-text-tertiary font-mono block mb-1">{item.date}</span>
+              <h3 className="font-[family-name:var(--font-playfair)] text-sm font-medium text-text-primary leading-snug">
+                {item.title}
+              </h3>
+              <p className="text-xs text-text-secondary mt-1 leading-relaxed">{item.description}</p>
+            </div>
+            {/* Timeline connector row */}
+            <div className="flex items-center w-full px-2">
+              {/* Left line (hidden for first item) */}
+              <div className={`flex-1 h-px ${i === 0 ? "invisible" : "bg-border-dark"}`} />
+              {/* Gold dot */}
+              <div
+                className="w-3 h-3 rounded-full border-2 flex-shrink-0"
+                style={{ borderColor: "#C9A84C", background: "#0a0a0a" }}
+              />
+              {/* Right line (hidden for last item) */}
+              <div className={`flex-1 h-px ${i === milestones.length - 1 ? "invisible" : "bg-border-dark"}`} />
+            </div>
           </div>
         ))}
       </div>
