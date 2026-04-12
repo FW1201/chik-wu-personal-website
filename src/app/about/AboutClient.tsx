@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { AboutTabs } from "./AboutTabs";
 
-interface BeliefItem { key: string; value: string; }
-
 interface ProfileData {
   name: { zh: string; en: string };
   tagline: string;
@@ -12,7 +10,6 @@ interface ProfileData {
   undergrad: string;
   certifications: string[];
   belief: string;
-  beliefItems?: BeliefItem[];
   roles: {
     id: string;
     name: string;
@@ -22,12 +19,6 @@ interface ProfileData {
     stat: string;
   }[];
 }
-
-const defaultBeliefItems: BeliefItem[] = [
-  { key: "認識", value: "認識數位科技技術之能與不能" },
-  { key: "理解", value: "理解數位科技於教學設計定位" },
-  { key: "應用", value: "應用數位科技之對象性格特徵" },
-];
 
 const bullets = [
   "國立臺灣師範大學 華語文教學研究所 碩士（2026）",
@@ -54,8 +45,6 @@ const stats = [
 ];
 
 export default function AboutClient({ profile }: { profile: ProfileData }) {
-  const beliefItems = profile.beliefItems ?? defaultBeliefItems;
-
   return (
     <main className="min-h-screen bg-bg-primary">
 
@@ -163,33 +152,10 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
         </div>
       </section>
 
-      {/* ── 第二列：理念（左）+ 輪播 Tabs（右）────────── */}
+      {/* ── 第二列：Tabs ─────────────────────────────────── */}
       <section className="px-6 md:px-12 lg:px-24 py-16 bg-bg-secondary border-t border-border-dark">
-        <div className="max-w-5xl grid grid-cols-1 lg:grid-cols-[240px,1fr] gap-10 items-start">
-
-          {/* 左：理念三段式 */}
-          <div className="lg:sticky lg:top-24">
-            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-medium text-text-primary mb-6">
-              理念
-            </h2>
-            <div className="border-l-2 border-[--color-gold] pl-5 py-1 space-y-5">
-              {beliefItems.map((item) => (
-                <div key={item.key}>
-                  <span className="text-[--color-gold] block text-xs font-semibold tracking-[0.15em] uppercase mb-1">
-                    {item.key}
-                  </span>
-                  <p className="font-[family-name:var(--font-playfair)] text-base text-text-primary leading-snug">
-                    {item.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 右：Tabs */}
-          <div className="min-w-0">
-            <AboutTabs roles={profile.roles} />
-          </div>
+        <div className="max-w-5xl">
+          <AboutTabs roles={profile.roles} />
         </div>
       </section>
 
@@ -197,7 +163,7 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
       <section className="px-6 md:px-12 lg:px-24 py-16 bg-bg-primary border-t border-border-dark">
         <div className="max-w-5xl">
           <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-8">深入了解</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {directoryLinks.map((item) => (
               <Link
                 key={item.href}
