@@ -1,61 +1,65 @@
 export interface Project {
   name: string;
   description: string;
-  category: "Chrome Extension" | "GAS System" | "AI Studio App" | "Skills Repo";
+  category: "Chrome Extension" | "GAS System" | "AI Studio App" | "Skills Repo" | "Gemini Gems";
   status: string;
-  github: string;
+  github?: string;
+  cws?: string;
+  live?: string;
   tags: string[];
 }
 
 export const projects: Project[] = [
+  // Chrome Extensions
   {
     name: "Chrome EDU Toolbox",
-    description: "教育工具箱 Chrome 擴充功能",
+    description: "教育白板工具箱 Chrome 擴充功能",
     category: "Chrome Extension",
-    status: "開發中",
-    github: "https://github.com/FW1201/Chrome-EDU-Toolbox",
-    tags: ["Chrome", "教育", "JavaScript"],
+    status: "已上架 CWS",
+    cws: "https://chromewebstore.google.com/detail/chrome-edu-toolbox/ghcbaidbgmbjembobdhpjlieopcnacoi",
+    tags: ["Chrome", "教育", "白板"],
   },
   {
     name: "ChatGPT EDU Prompt Assistant TW",
     description: "ChatGPT 教育提示詞助手（臺灣版）",
     category: "Chrome Extension",
-    status: "開發中",
+    status: "已上架 CWS",
     github: "https://github.com/FW1201/ChatGPT-EDU-Prompt-Assistant-TW",
+    cws: "https://chromewebstore.google.com/detail/chatgpt-edu-prompt-assist/hnnlhchjbkebmlbfpalgamheklhhibmd",
     tags: ["Chrome", "ChatGPT", "Prompt"],
   },
   {
     name: "Gemini EDU Prompt Assistant TW",
-    description: "Gemini 教育提示詞助手（臺灣版），已上架 Chrome Web Store",
+    description: "Gemini 教育提示詞助手（臺灣版）",
     category: "Chrome Extension",
     status: "已上架 CWS v2.1.2",
-    github: "https://github.com/FW1201/Gemini-EDU-Prompt-Assistant-TW",
+    cws: "https://chromewebstore.google.com/detail/gemini-edu-prompt-assista/hdgldjckecimnemejlogfiiebpbdnapa",
     tags: ["Chrome", "Gemini", "CWS"],
-  },
-  {
-    name: "GAS AI Companion",
-    description: "Google Apps Script AI 輔助工具",
-    category: "Chrome Extension",
-    status: "開發中",
-    github: "https://github.com/FW1201/GAS-AI-Companion",
-    tags: ["Chrome", "GAS", "AI"],
   },
   {
     name: "NotebookLM EDU Enhancer TW",
     description: "NotebookLM 教育增強器（臺灣版）",
     category: "Chrome Extension",
-    status: "v8.5",
-    github: "https://github.com/FW1201/NotebookLM-EDU-Enhancer-TW",
+    status: "已上架 CWS v8.5",
+    cws: "https://chromewebstore.google.com/detail/notebooklm-%E5%8C%AF%E5%87%BA%E5%B7%A5%E5%85%B7/modkfkgmcjbkjhjmhjakohhnfbleghoj",
     tags: ["Chrome", "NotebookLM", "教育"],
   },
   {
     name: "Chrome NOTE Toolbox",
     description: "筆記工具箱 Chrome 擴充功能",
     category: "Chrome Extension",
-    status: "開發中",
-    github: "https://github.com/FW1201/Chrome-NOTE-Toolbox",
+    status: "已上架 CWS",
+    cws: "https://chromewebstore.google.com/detail/chrome-note-toolbox/adfhmlcncdkgplckblejoggnmjekakkd",
     tags: ["Chrome", "筆記", "工具"],
   },
+  {
+    name: "GAS AI Companion",
+    description: "Google Apps Script AI 輔助工具",
+    category: "Chrome Extension",
+    status: "私有工具",
+    tags: ["Chrome", "GAS", "AI"],
+  },
+  // GAS Systems
   {
     name: "Receipt System",
     description: "收據管理系統 — Google Apps Script 自動化",
@@ -72,6 +76,7 @@ export const projects: Project[] = [
     github: "https://github.com/FW1201/Leave-Application-System-for-Teachers",
     tags: ["GAS", "行政", "請假"],
   },
+  // AI Studio Apps
   {
     name: "SEL Game of Ancient People",
     description: "社會情緒學習古人遊戲 — Google AI Studio App",
@@ -88,13 +93,40 @@ export const projects: Project[] = [
     github: "https://github.com/FW1201/Meal-Carbon-Footprint-Analyzer",
     tags: ["AI Studio", "環保", "分析"],
   },
+  // Skills Repos
   {
     name: "tw-edu-skills",
-    description: "臺灣 K-12 教育 Claude Code Skills 套組 — 台灣首套開源教育 AI Skills",
+    description: "臺灣 K-12 教學 Claude Code Skills 套組 — 台灣首套開源教育 AI Skills",
     category: "Skills Repo",
     status: "5⭐ 7 forks",
     github: "https://github.com/FW1201/tw-edu-skills",
     tags: ["Claude Code", "Skills", "教育", "開源"],
+  },
+  {
+    name: "tw-stu-skills",
+    description: "臺灣 K-12 學生 Claude Code Skills 套組（10 Skills）",
+    category: "Skills Repo",
+    status: "開源",
+    github: "https://github.com/FW1201/tw-stu-skills",
+    tags: ["Claude Code", "Skills", "學生", "開源"],
+  },
+  {
+    name: "tw-research-skills",
+    description: "學術研究 Claude Code Skills 套組（9 Skills）",
+    category: "Skills Repo",
+    status: "開源",
+    github: "https://github.com/FW1201/tw-research-skills",
+    tags: ["Claude Code", "Skills", "學術", "開源"],
+  },
+  // Gemini Gems
+  {
+    name: "數位敘事力期刊 Gems 大全",
+    description: "22 個 Gemini Gems 工具入口，含繪圖、教學、簡報、學術等 7 分類",
+    category: "Gemini Gems",
+    status: "22 Gems",
+    github: "https://github.com/FW1201/gemini-gems-portal",
+    live: "https://gems-portal.vercel.app",
+    tags: ["Gemini", "Gems", "AI工具", "教育"],
   },
 ];
 

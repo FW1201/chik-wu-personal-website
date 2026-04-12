@@ -8,6 +8,7 @@ import {
   Code2,
   Mic2,
   BookOpen,
+  Trophy,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -41,6 +42,45 @@ const researchAreas = [
   { title: "AI 輔助語言教學", description: "探索生成式 AI 在華語文教學中的應用與效果" },
   { title: "數位素養教育", description: "研究 AI 時代下的數位素養框架與教學策略" },
   { title: "教育科技開發", description: "以實證研究驅動教育工具的設計與迭代" },
+];
+
+const awards = [
+  {
+    icon: <GraduationCap className="w-5 h-5" />,
+    title: "國立臺灣師範大學 碩士學位",
+    year: "2026",
+    desc: "華語文教學研究所，專攻語料庫語言學與 AI 教育應用",
+  },
+  {
+    icon: <Trophy className="w-5 h-5" />,
+    title: "CASLAR 2025 SSCI 論文發表",
+    year: "2025",
+    desc: "語料庫語言學研究成果於國際 SSCI 期刊發表",
+  },
+  {
+    icon: <Trophy className="w-5 h-5" />,
+    title: "Google Certified Trainer",
+    year: "2024",
+    desc: "Google 官方認證教育培訓師，具備 Workspace for Education 培訓資格",
+  },
+  {
+    icon: <Trophy className="w-5 h-5" />,
+    title: "Gemini Academy 講師",
+    year: "2024",
+    desc: "受邀擔任 Gemini Academy 教育應用課程講師",
+  },
+  {
+    icon: <Trophy className="w-5 h-5" />,
+    title: "tw-edu-skills 開源社群 5⭐",
+    year: "2024",
+    desc: "台灣首套 K-12 教師開源 Claude Code Skills，獲社群 5 星評分與 7 次 Fork",
+  },
+  {
+    icon: <Mic2 className="w-5 h-5" />,
+    title: "134+ 場 AI 教育演講",
+    year: "2023–2026",
+    desc: "橫跨台灣各縣市學校、企業與國際場域（USC、PSU）",
+  },
 ];
 
 interface ProfileData {
@@ -137,34 +177,67 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
         </div>
       </section>
 
-      {/* Six Roles Detail (Light) */}
+      {/* 榮譽與成就 */}
       <section className="bg-bg-light py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <SectionHeading
+            title="榮譽與成就"
+            subtitle="學術、教育與開發領域的重要里程碑"
+            light
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {awards.map((award) => (
+              <motion.div
+                key={award.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45 }}
+                className="rounded-xl border border-border-light bg-white p-5 flex gap-4"
+              >
+                <div className="text-gray-400 flex-shrink-0 mt-0.5">{award.icon}</div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="font-[family-name:var(--font-playfair)] text-base font-medium text-text-dark">
+                      {award.title}
+                    </h3>
+                    <span className="text-xs text-gray-400 font-mono">{award.year}</span>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1 leading-relaxed">{award.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Six Roles Detail */}
+      <section className="bg-bg-primary py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             title="六角色工作系統"
             subtitle="每個角色代表一個專業面向，彼此交織形成完整的教育實踐"
-            light
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {profile.roles.map((role) => (
-              <Card key={role.id} light className="flex flex-col">
+              <Card key={role.id} className="flex flex-col">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="text-text-dark-secondary">
+                  <div className="text-text-secondary">
                     {roleIcons[role.icon]}
                   </div>
                   <div>
-                    <h3 className="font-[family-name:var(--font-playfair)] text-xl font-medium text-text-dark">
+                    <h3 className="font-[family-name:var(--font-playfair)] text-xl font-medium text-text-primary">
                       {role.name}
                     </h3>
-                    <p className="text-xs text-text-dark-secondary">
+                    <p className="text-xs text-text-tertiary">
                       {role.nameEn}
                     </p>
                   </div>
                 </div>
-                <p className="text-sm text-text-dark-secondary leading-relaxed flex-1">
+                <p className="text-sm text-text-secondary leading-relaxed flex-1">
                   {roleDetails[role.id]}
                 </p>
-                <p className="mt-4 text-xs font-medium text-text-dark-secondary tracking-wide border-t border-border-light pt-3">
+                <p className="mt-4 text-xs font-medium text-text-tertiary tracking-wide border-t border-border-dark pt-3">
                   {role.stat}
                 </p>
               </Card>
@@ -174,19 +247,20 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
       </section>
 
       {/* Research Areas */}
-      <section className="bg-bg-primary py-24 px-6">
+      <section className="bg-bg-light py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             title="研究領域"
             subtitle="聚焦語言學與教育科技的交叉地帶"
+            light
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {researchAreas.map((area) => (
-              <Card key={area.title}>
-                <h3 className="font-[family-name:var(--font-playfair)] text-lg font-medium text-text-primary">
+              <Card key={area.title} light>
+                <h3 className="font-[family-name:var(--font-playfair)] text-lg font-medium text-text-dark">
                   {area.title}
                 </h3>
-                <p className="text-sm text-text-secondary mt-2 leading-relaxed">
+                <p className="text-sm text-text-dark-secondary mt-2 leading-relaxed">
                   {area.description}
                 </p>
               </Card>

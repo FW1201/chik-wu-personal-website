@@ -4,6 +4,7 @@ import { useState } from "react";
 import { articles, papers } from "@/data/publications";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
+import { ExternalLink } from "lucide-react";
 
 const statusConfig: Record<string, { label: string; className: string }> = {
   published: { label: "已發表", className: "bg-[#2a2a2a] text-[#a0a0a0] border border-[#3a3a3a]" },
@@ -11,6 +12,12 @@ const statusConfig: Record<string, { label: string; className: string }> = {
   submitted: { label: "投稿中", className: "bg-[#2a2a1a] text-[#c0b060] border border-[#3a3a2a]" },
   pending: { label: "待發表", className: "bg-[#1a1a1a] text-text-tertiary border border-border-dark" },
 };
+
+const forumLinks = [
+  { label: "翻轉教育作者頁", href: "https://flipedu.parenting.com.tw/author/1112" },
+  { label: "2025 AI 素養教育論壇", href: "https://flipedu.parenting.com.tw/event/114" },
+  { label: "2026 AI 素養教育論壇", href: "https://flipedu.parenting.com.tw/event/145" },
+];
 
 export default function PublicationsPage() {
   const [activeTab, setActiveTab] = useState<"articles" | "papers">("articles");
@@ -47,6 +54,24 @@ export default function PublicationsPage() {
             學術研究
           </button>
         </div>
+
+        {/* Forum links — shown on articles tab */}
+        {activeTab === "articles" && (
+          <div className="flex flex-wrap items-center gap-3 mt-5">
+            {forumLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs text-text-secondary border border-border-dark rounded-full hover:text-text-primary hover:border-text-tertiary transition-colors"
+              >
+                {link.label}
+                <ExternalLink size={11} />
+              </a>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Content */}
@@ -54,24 +79,56 @@ export default function PublicationsPage() {
         {activeTab === "articles" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {articles.map((article) => (
-              <Card key={article.id}>
-                <p className="text-xs text-text-tertiary mb-3 tracking-wide">
-                  {article.date}
-                </p>
-                <h3 className="text-text-primary font-medium leading-relaxed mb-4">
-                  {article.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {article.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-xs rounded-full bg-bg-secondary text-text-tertiary border border-border-dark"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </Card>
+              article.url ? (
+                <a
+                  key={article.id}
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
+                  <Card className="h-full transition-colors group-hover:border-text-tertiary">
+                    <div className="flex items-start justify-between gap-2 mb-3">
+                      <p className="text-xs text-text-tertiary tracking-wide">
+                        {article.date}
+                      </p>
+                      <ExternalLink size={13} className="text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5" />
+                    </div>
+                    <h3 className="text-text-primary font-medium leading-relaxed mb-4">
+                      {article.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {article.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 text-xs rounded-full bg-bg-secondary text-text-tertiary border border-border-dark"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </Card>
+                </a>
+              ) : (
+                <Card key={article.id}>
+                  <p className="text-xs text-text-tertiary mb-3 tracking-wide">
+                    {article.date}
+                  </p>
+                  <h3 className="text-text-primary font-medium leading-relaxed mb-4">
+                    {article.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {article.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 text-xs rounded-full bg-bg-secondary text-text-tertiary border border-border-dark"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </Card>
+              )
             ))}
           </div>
         )}

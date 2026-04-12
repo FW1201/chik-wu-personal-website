@@ -7,12 +7,13 @@ export const metadata: Metadata = {
   title: "開發成果",
 };
 
-const categoryOrder = ["Chrome Extension", "GAS System", "AI Studio App", "Skills Repo"] as const;
+const categoryOrder = ["Chrome Extension", "GAS System", "AI Studio App", "Skills Repo", "Gemini Gems"] as const;
 const categoryLabels: Record<string, string> = {
   "Chrome Extension": "Chrome 擴充功能",
   "GAS System": "Google Apps Script 系統",
   "AI Studio App": "AI Studio 應用",
   "Skills Repo": "Skills 套組",
+  "Gemini Gems": "Gemini Gems 工具",
 };
 
 const techStack = [
@@ -23,14 +24,56 @@ const techStack = [
   "JavaScript",
   "Python",
   "Manifest V3",
+  "Gemini API",
 ];
+
+function ProjectLinks({ project }: { project: { github?: string; cws?: string; live?: string } }) {
+  const hasLinks = project.github || project.cws || project.live;
+  if (!hasLinks) {
+    return <span className="text-xs text-text-tertiary">私有工具</span>;
+  }
+  return (
+    <div className="flex flex-wrap gap-2">
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-3 py-1 text-xs rounded-md border border-border-dark text-text-tertiary hover:text-text-primary hover:border-text-tertiary transition-colors"
+        >
+          GitHub ↗
+        </a>
+      )}
+      {project.cws && (
+        <a
+          href={project.cws}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-3 py-1 text-xs rounded-md border border-[#4285f4]/40 text-[#8ab4f8] hover:border-[#4285f4] hover:text-[#4285f4] transition-colors"
+        >
+          CWS ↗
+        </a>
+      )}
+      {project.live && (
+        <a
+          href={project.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-3 py-1 text-xs rounded-md border border-[#34a853]/40 text-[#81c995] hover:border-[#34a853] hover:text-[#34a853] transition-colors"
+        >
+          網站 ↗
+        </a>
+      )}
+    </div>
+  );
+}
 
 export default function ProjectsPage() {
   const grouped = categoryOrder.map((cat) => ({
     category: cat,
     label: categoryLabels[cat],
     items: projects.filter((p) => p.category === cat),
-  }));
+  })).filter((g) => g.items.length > 0);
 
   return (
     <main className="min-h-screen bg-bg-primary">
@@ -38,7 +81,7 @@ export default function ProjectsPage() {
       <section className="px-6 md:px-12 lg:px-24 pt-32 pb-16">
         <SectionHeading
           title="開發成果"
-          subtitle="11 個專案 — Chrome 擴充、自動化系統、AI 應用與開源 Skills"
+          subtitle="Chrome 擴充、GAS 自動化、AI 應用、開源 Skills 與 Gemini Gems"
         />
       </section>
 
@@ -51,52 +94,29 @@ export default function ProjectsPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {group.items.map((project) => (
-                <Card key={project.name}>
+                <Card key={project.name} className="flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h4 className="text-text-primary font-medium leading-snug">
                       {project.name}
                     </h4>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-text-tertiary hover:text-text-primary transition-colors shrink-0"
-                      aria-label={`${project.name} GitHub`}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                      </svg>
-                    </a>
-                  </div>
-                  <p className="text-sm text-text-secondary mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-1 text-xs rounded-full bg-bg-secondary text-text-tertiary border border-border-dark"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <span className="text-xs text-text-tertiary whitespace-nowrap">
+                    <span className="text-xs text-text-tertiary whitespace-nowrap shrink-0">
                       {project.status}
                     </span>
                   </div>
+                  <p className="text-sm text-text-secondary mb-4 leading-relaxed flex-1">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 text-xs rounded-full bg-bg-secondary text-text-tertiary border border-border-dark"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <ProjectLinks project={project} />
                 </Card>
               ))}
             </div>

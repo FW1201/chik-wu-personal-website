@@ -1,7 +1,7 @@
 export const profile = {
   name: { zh: "吳奇", en: "Chi. K. Wu" },
   tagline: "AI Education Researcher • Speaker • Developer",
-  education: "國立臺灣師範大學 華語文教學碩士（2026）",
+  education: "國立臺灣師範大學 華語文教學碩士（2026年3月畢業）",
   undergrad: "國立中央大學 中國文學系",
   certifications: [
     "Google Certified Trainer",
@@ -9,9 +9,11 @@ export const profile = {
     "CASLAR 2025 SSCI 發表",
   ],
   belief: "AI 是媒介，不是目的 — 教學法永遠優先",
-  facebook: "profile.php?id=100064094937977",
+  facebook: "https://www.facebook.com/profile.php?id=100064094937977",
+  threads: "https://www.threads.net/@journal_of_digital_narrative",
   instagram: "journal_of_digital_narrative",
   youtube: "Journal_of_Digital_Narrative",
+  flipedu: "https://flipedu.parenting.com.tw/author/1112",
   stats: [
     { value: 134, suffix: "+", label: "場演講" },
     { value: 17, suffix: "", label: "篇教育文章" },
@@ -34,7 +36,7 @@ export const profile = {
       nameEn: "Researcher",
       icon: "FlaskConical",
       description: "語料庫語言學 × AI 教育研究，CASLAR 2025 SSCI 發表",
-      stat: "8 篇論文 · 碩士已口試通過",
+      stat: "8 篇論文 · 碩士 2026.03 畢業",
     },
     {
       id: "teacher",

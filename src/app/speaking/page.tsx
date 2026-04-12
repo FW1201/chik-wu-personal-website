@@ -6,11 +6,19 @@ import {
   featuredTalks,
 } from "@/data/speaking";
 import { SpeakingContent } from "./SpeakingContent";
-import { SpeakingMapWrapper } from "@/components/speaking/SpeakingMapWrapper";
 
 export const metadata: Metadata = {
   title: "演講與培訓",
 };
+
+const audienceData = [
+  { label: "K-12 學校", count: speakingStats.audience.k12 },
+  { label: "大學院校", count: speakingStats.audience.university },
+  { label: "職業學校", count: speakingStats.audience.vocational },
+  { label: "企業機構", count: speakingStats.audience.corporate },
+];
+
+const maxAudience = Math.max(...audienceData.map((d) => d.count));
 
 export default function SpeakingPage() {
   return (
@@ -31,12 +39,29 @@ export default function SpeakingPage() {
         <SpeakingContent />
       </section>
 
-      {/* ── Map Section ───────────────────────────────────── */}
+      {/* ── Audience Distribution ─────────────────────────── */}
       <section className="px-6 md:px-12 lg:px-24 pb-20">
-        <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-medium text-text-primary mb-6">
-          演講足跡
+        <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-medium text-text-primary mb-8">
+          聽眾分佈
         </h2>
-        <SpeakingMapWrapper />
+        <div className="max-w-2xl space-y-5">
+          {audienceData.map((item) => (
+            <div key={item.label}>
+              <div className="flex justify-between mb-2">
+                <span className="text-sm text-text-secondary">{item.label}</span>
+                <span className="text-sm text-text-tertiary font-mono tabular-nums">
+                  {item.count} 場
+                </span>
+              </div>
+              <div className="h-2 bg-bg-secondary rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-text-primary rounded-full"
+                  style={{ width: `${(item.count / maxAudience) * 100}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* ── Milestones (light bg) ─────────────────────────── */}

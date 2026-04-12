@@ -1,10 +1,54 @@
-import { Code2, Camera, Video, Mail } from "lucide-react";
+import { Code2, Camera, Video, Mail, BookOpen, AtSign } from "lucide-react";
 
-const socialLinks = [
-  { href: "https://github.com/FW1201", icon: Code2, label: "GitHub" },
-  { href: "https://www.instagram.com/journal_of_digital_narrative/", icon: Camera, label: "Instagram" },
-  { href: "https://www.youtube.com/@Journal_of_Digital_Narrative", icon: Video, label: "YouTube" },
-  { href: "mailto:kevinwu@gtrainerdemo.jdn2023.com", icon: Mail, label: "Email" },
+function FacebookIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+const socialLinks: Array<{
+  href: string;
+  label: string;
+  Icon: React.ComponentType<{ size?: number }>;
+}> = [
+  { href: "https://github.com/FW1201", label: "GitHub", Icon: Code2 },
+  {
+    href: "https://www.facebook.com/profile.php?id=100064094937977",
+    label: "Facebook",
+    Icon: FacebookIcon,
+  },
+  {
+    href: "https://www.threads.net/@journal_of_digital_narrative",
+    label: "Threads",
+    Icon: AtSign,
+  },
+  {
+    href: "https://flipedu.parenting.com.tw/author/1112",
+    label: "FlipEdu",
+    Icon: BookOpen,
+  },
+  {
+    href: "https://www.instagram.com/journal_of_digital_narrative/",
+    label: "Instagram",
+    Icon: Camera,
+  },
+  {
+    href: "https://www.youtube.com/@Journal_of_Digital_Narrative",
+    label: "YouTube",
+    Icon: Video,
+  },
+  { href: "mailto:kevinwu@gtrainerdemo.jdn2023.com", label: "Email", Icon: Mail },
 ];
 
 export function Footer() {
@@ -21,17 +65,17 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 flex-wrap justify-center">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                 className="text-text-tertiary hover:text-text-primary transition-colors"
                 aria-label={link.label}
               >
-                <link.icon size={20} />
+                <link.Icon size={20} />
               </a>
             ))}
           </div>

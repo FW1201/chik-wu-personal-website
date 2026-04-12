@@ -11,8 +11,10 @@ const navLinks = [
   { href: "/speaking", label: "演講培訓" },
   { href: "/publications", label: "著作研究" },
   { href: "/projects", label: "開發成果" },
+  { href: "/gems", label: "Gemini Gems" },
   { href: "/journal", label: "數位敘事力" },
-  { href: "/resources", label: "教學資源" },
+  { href: "/jdn-resources", label: "教學資源" },
+  { href: "/resources", label: "更多資源" },
   { href: "/contact", label: "邀請演講" },
 ];
 

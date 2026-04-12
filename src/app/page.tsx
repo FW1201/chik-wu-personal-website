@@ -26,11 +26,15 @@ const roleIcons: Record<string, React.ReactNode> = {
 
 const highlights = [
   {
+    title: "碩士學位畢業（2026.03）",
+    description: "國立臺灣師範大學華語文教學碩士，完成語料庫語言學研究",
+  },
+  {
     title: "CASLAR 2025 SSCI 論文發表",
     description: "語料庫語言學研究成果登上國際 SSCI 期刊",
   },
   {
-    title: "tw-edu-skills 5\u2B50 7 forks",
+    title: "tw-edu-skills 5⭐ 7 forks",
     description: "開源 AI 教育技能包獲社群高度關注",
   },
   {
@@ -47,7 +51,10 @@ export default function HomePage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-bg-primary px-6">
+      <section
+        className="relative min-h-screen flex items-center justify-center bg-bg-primary px-6"
+        style={{ backgroundImage: "url('/hero-pattern.svg')", backgroundRepeat: "repeat" }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
