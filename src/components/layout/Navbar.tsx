@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "首頁" },
-  { href: "/about", label: "關於我" },
+  { href: "/about", label: "關於吳奇" },
   { href: "/speaking", label: "演講培訓" },
   { href: "/publications", label: "著作研究" },
-  { href: "/projects", label: "開發成果" },
+  { href: "/projects", label: "氛圍開發專案" },
   { href: "/resources", label: "資源中心" },
   { href: "/contact", label: "邀請演講" },
 ];

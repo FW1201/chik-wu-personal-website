@@ -39,6 +39,7 @@ export const articles: Article[] = [
 ];
 
 export const papers: Paper[] = [
+  // ── 已發表 / 碩士論文（顯示）────────────────────────
   {
     title: "漢語「讓」vs「使」語意韻研究",
     titleEn: "A corpus-based study of semantic prosody in ràng and shǐ constructions",
@@ -62,10 +63,9 @@ export const papers: Paper[] = [
     title: "反義構式「有X有Y」之探究及教學啟示",
     titleEn: "A Case Study of Contrastive Construction \"yǒu X yǒu Y\" and Pedagogical Implications",
     authors: "吳奇、蕭惠貞",
-    journal: "國立臺灣師範大學華語文教學系",
-    year: "待發表",
-    status: "pending",
-    highlight: true,
+    journal: "第十一屆臺大華語文教學研究生論文發表會",
+    year: "2024",
+    status: "published",
     tags: ["構式語法", "教學"],
   },
   {
@@ -74,11 +74,43 @@ export const papers: Paper[] = [
     authors: "Wu, C.",
     journal: "學術研討會",
     year: "2024",
-    status: "pending",
+    status: "published",
     doi: "https://conference.pixel-online.net/library_scheda.php?id_abs=6284",
-    highlight: true,
     tags: ["AI教育", "TBCL"],
   },
+  {
+    title: "生成式AI輔助白話文本閱讀教學模式初探——以「AI伴學小助教」為例",
+    authors: "吳奇、鍾幸純",
+    journal: "第十五屆數位典藏與數位人文國際研討會（DADH 2024）",
+    year: "2024",
+    status: "published",
+    tags: ["AI教育", "閱讀教學"],
+  },
+  {
+    title: "以臺灣華語文能力基準為本之組合式網頁數位教材發展初探",
+    authors: "吳奇、呂佩庭、林慶隆",
+    journal: "第十屆國際華語文教師研討會暨第十三屆華語文研究生研討會（世界華語文教育學會）",
+    year: "2023",
+    status: "published",
+    tags: ["TBCL", "數位教材"],
+  },
+  {
+    title: "數位華語教材發展模式探討—TBCL的教材匯流與協作",
+    authors: "呂佩庭、吳奇、林慶隆",
+    journal: "第十屆國際華語文教師研討會暨第十三屆華語文研究生研討會（世界華語文教育學會）",
+    year: "2023",
+    status: "published",
+    tags: ["TBCL", "協作教材"],
+  },
+  {
+    title: "台灣文學作品華語文教材難易度研究",
+    authors: "吳奇、顏子芸",
+    journal: "第十九屆台灣華語文教學研討會（台灣華語文教學學會）",
+    year: "2020",
+    status: "published",
+    tags: ["華語教材", "難易度"],
+  },
+  // ── 未公開（不顯示）─────────────────────────────────
   {
     title: "AI輔助華語教材編寫之初探：推理語言模型於教材內容設計實務應用",
     authors: "吳奇",
@@ -92,13 +124,6 @@ export const papers: Paper[] = [
     year: "待發表",
     status: "pending",
     tags: ["語用學", "社會語用"],
-  },
-  {
-    title: "生成式AI輔助白話文本閱讀教學模式初探——以「AI伴學小助教」為例",
-    authors: "吳奇、鍾幸純",
-    year: "待發表",
-    status: "pending",
-    tags: ["AI教育", "閱讀教學"],
   },
   {
     title: "生成式人工智慧的偏見促發與語言教學應用建議",

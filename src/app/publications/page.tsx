@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { articles, papers } from "@/data/publications";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { ExternalLink } from "lucide-react";
 
@@ -20,7 +19,7 @@ const forumLinks = [
 ];
 
 const visiblePapers = papers.filter(
-  (p) => p.status === "published" || p.status === "thesis" || p.highlight === true
+  (p) => p.status === "published" || p.status === "thesis"
 );
 
 export default function PublicationsPage() {
@@ -28,13 +27,29 @@ export default function PublicationsPage() {
 
   return (
     <main className="min-h-screen bg-bg-primary">
-      {/* Header */}
-      <section className="px-6 md:px-12 lg:px-24 pt-32 pb-16">
-        <SectionHeading
-          title="著作與研究"
-          subtitle="17 篇翻轉教育文章 + 8 篇學術論文"
-        />
+      {/* Hero */}
+      <section
+        className="relative min-h-[40vh] flex flex-col justify-end px-6 md:px-12 lg:px-24 pt-32 pb-16"
+        style={{
+          backgroundImage: "url('/images/publications-hero.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/65 to-bg-primary" />
+        <div className="relative z-10">
+          <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-4">
+            Publications · Research
+          </p>
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-medium text-text-primary leading-tight mb-3">
+            著作與研究
+          </h1>
+          <p className="text-text-secondary">17 篇翻轉教育文章 · 8 篇學術論文</p>
+        </div>
+      </section>
 
+      {/* Tab switcher */}
+      <section className="px-6 md:px-12 lg:px-24 pt-10 pb-4">
         {/* Tab Switcher */}
         <div className="flex gap-3 mt-8">
           <button

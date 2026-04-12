@@ -21,7 +21,7 @@ export default function SpeakingPage() {
       <section
         className="relative min-h-[70vh] flex flex-col justify-end px-6 md:px-12 lg:px-24 pt-32 pb-20"
         style={{
-          backgroundImage: "url('/images/speaker-keynote.jpg')",
+          backgroundImage: "url('/images/speaking-hero.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center top",
         }}

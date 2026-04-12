@@ -10,6 +10,11 @@ export const profile = {
     "中等學校教師證（國文科）",
   ],
   belief: "認識、理解、應用是數位融入教學的畢竟路程",
+  beliefItems: [
+    { key: "認識", value: "認識數位科技技術之能與不能" },
+    { key: "理解", value: "理解數位科技於教學設計定位" },
+    { key: "應用", value: "應用數位科技之對象性格特徵" },
+  ],
   facebook: "https://www.facebook.com/profile.php?id=100064094937977",
   threads: "https://www.threads.net/@journal_of_digital_narrative",
   instagram: "journal_of_digital_narrative",
