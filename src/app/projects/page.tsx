@@ -23,10 +23,34 @@ const categoryDescriptions: Record<Category, string> = {
 };
 
 /* ── Install commands ───────────────────────────────────── */
-const installCommands = [
-  { label: "Claude Code", cmd: "npm install -g @anthropic-ai/claude-code" },
-  { label: "Codex",       cmd: "npm install -g @openai/codex" },
-  { label: "Antigravity", cmd: "npx antigravity" },
+const skillGroups = [
+  {
+    label: "教學 Skills",
+    note: "Claude Code 為最佳使用環境",
+    cmds: [
+      { tool: "Claude Code", cmd: "npx skills add FW1201/tw-edu-skills --all -a claude-code" },
+      { tool: "Codex CLI",   cmd: "npx skills add FW1201/tw-edu-skills --all -a codex" },
+      { tool: "Antigravity", cmd: "npx skills add FW1201/tw-edu-skills --all -a antigravity" },
+    ],
+  },
+  {
+    label: "學習 Skills",
+    note: "Claude Code 為最佳使用環境",
+    cmds: [
+      { tool: "Claude Code", cmd: "npx skills add FW1201/tw-stu-skills --all -a claude-code" },
+      { tool: "Codex CLI",   cmd: "npx skills add FW1201/tw-stu-skills --all -a codex" },
+      { tool: "Antigravity", cmd: "npx skills add FW1201/tw-stu-skills --all -a antigravity" },
+    ],
+  },
+  {
+    label: "學術研究 Skills",
+    note: "Claude Code 為最佳使用環境",
+    cmds: [
+      { tool: "Claude Code", cmd: "npx skills add FW1201/tw-research-skills --all -a claude-code" },
+      { tool: "Codex CLI",   cmd: "npx skills add FW1201/tw-research-skills --all -a codex" },
+      { tool: "Antigravity", cmd: "npx skills add FW1201/tw-research-skills --all -a antigravity" },
+    ],
+  },
 ];
 
 /* ── Link badges ────────────────────────────────────────── */
@@ -200,21 +224,29 @@ export default function ProjectsPage() {
         </div>
 
         {/* Install commands */}
-        <div className="border-t border-border-dark pt-10">
-          <h4 className="text-xs text-text-tertiary uppercase tracking-[0.2em] mb-6">
-            安裝 AI 開發工具
+        <div className="border-t border-border-dark pt-10 space-y-8">
+          <h4 className="text-xs text-text-tertiary uppercase tracking-[0.2em]">
+            安裝 Skills 套組
           </h4>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {installCommands.map((cmd) => (
-              <div key={cmd.label}
-                   className="border border-border-dark bg-bg-primary rounded-xl p-5">
-                <p className="text-sm font-medium text-text-primary mb-3">{cmd.label}</p>
-                <code className="text-xs text-[--color-gold] font-mono break-all">
-                  {cmd.cmd}
-                </code>
+          {skillGroups.map((group) => (
+            <div key={group.label}>
+              <div className="flex items-baseline gap-3 mb-3">
+                <h5 className="text-sm font-medium text-text-primary">{group.label}</h5>
+                <span className="text-xs text-text-tertiary">{group.note}</span>
               </div>
-            ))}
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {group.cmds.map((c) => (
+                  <div key={c.tool}
+                       className="border border-border-dark bg-bg-secondary rounded-xl p-4">
+                    <p className="text-xs font-medium text-text-tertiary mb-2">{c.tool}</p>
+                    <code className="text-xs text-[--color-gold] font-mono break-all leading-relaxed">
+                      {c.cmd}
+                    </code>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>

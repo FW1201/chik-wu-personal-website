@@ -130,11 +130,11 @@ function TopicEvolutionPanel() {
 function MilestonesPanel() {
   return (
     <div className="overflow-x-auto pb-6">
-      <div className="flex items-start min-w-max">
+      <div className="flex items-start gap-4 min-w-max">
         {milestones.map((item, i) => (
-          <div key={i} className="flex flex-col items-center" style={{ width: "13rem" }}>
+          <div key={i} className="flex flex-col items-center" style={{ width: "17rem" }}>
             {/* Card */}
-            <div className="border border-border-dark bg-bg-card rounded-xl p-4 w-full mb-4 mx-2">
+            <div className="border border-border-dark bg-bg-card rounded-xl p-5 w-full mb-5">
               <span className="text-xs text-text-tertiary font-mono block mb-1">{item.date}</span>
               <h3 className="font-[family-name:var(--font-playfair)] text-sm font-medium text-text-primary leading-snug">
                 {item.title}
