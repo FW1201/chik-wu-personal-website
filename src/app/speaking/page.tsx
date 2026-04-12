@@ -23,7 +23,7 @@ export default function SpeakingPage() {
         style={{
           backgroundImage: "url('/images/speaking-hero.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "center 65%",
         }}
       >
         {/* Overlay */}
@@ -49,10 +49,10 @@ export default function SpeakingPage() {
               邀請演講 →
             </Link>
             <a
-              href="mailto:wu.k.chi@gmail.com"
+              href="mailto:kevinwu@gtrainerdemo.jdn2023.com"
               className="text-sm text-text-tertiary hover:text-text-secondary transition-colors"
             >
-              wu.k.chi@gmail.com
+              kevinwu@gtrainerdemo.jdn2023.com
             </a>
           </div>
         </div>

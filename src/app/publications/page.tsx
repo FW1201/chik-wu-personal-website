@@ -33,7 +33,7 @@ export default function PublicationsPage() {
         style={{
           backgroundImage: "url('/images/publications-hero.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "center 65%",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/65 to-bg-primary" />

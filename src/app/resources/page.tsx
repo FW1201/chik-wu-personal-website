@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { notebooks, type NotebookCategory } from "@/data/notebooks";
+import { gems, gemCategories, type GemCategory } from "@/data/gems";
 
-const CATEGORIES = [
+/* ── Notebook filter ────────────────────────────────────── */
+const NB_CATEGORIES = [
   "全部",
   "教師應用",
   "TBCL華語文教學",
@@ -12,25 +14,28 @@ const CATEGORIES = [
   "國文科",
   "親師溝通",
 ] as const;
-type FilterCategory = (typeof CATEGORIES)[number];
+type NbFilter = (typeof NB_CATEGORIES)[number];
 
-const categoryCount = (cat: NotebookCategory) =>
+const nbCount = (cat: NotebookCategory) =>
   notebooks.filter((n) => n.category === cat).length;
 
-const statsBar = [
-  { value: "22", label: "公開筆記本" },
-  { value: "5",  label: "教師應用" },
-  { value: "8",  label: "TBCL 華語" },
-  { value: "5",  label: "學生學習" },
-];
+/* ── Gem filter ─────────────────────────────────────────── */
+const GEM_ALL = "全部" as const;
+type GemFilter = GemCategory | typeof GEM_ALL;
 
 export default function ResourcesPage() {
-  const [active, setActive] = useState<FilterCategory>("全部");
+  const [nbActive, setNbActive]   = useState<NbFilter>("全部");
+  const [gemActive, setGemActive] = useState<GemFilter>(GEM_ALL);
 
-  const filtered =
-    active === "全部"
+  const filteredNb =
+    nbActive === "全部"
       ? notebooks
-      : notebooks.filter((n) => n.category === active);
+      : notebooks.filter((n) => n.category === nbActive);
+
+  const filteredGems =
+    gemActive === GEM_ALL
+      ? gems
+      : gems.filter((g) => g.cat === gemActive);
 
   return (
     <main className="min-h-screen bg-bg-primary">
@@ -40,19 +45,19 @@ export default function ResourcesPage() {
         style={{
           backgroundImage: "url('/images/resources-hero.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "center 65%",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/20 via-bg-primary/60 to-bg-primary" />
         <div className="relative z-10 max-w-4xl">
           <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-4">
-            NotebookLM · Public Notebooks
+            NotebookLM · Gemini Gems
           </p>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-medium text-text-primary leading-tight">
             資源中心
           </h1>
           <p className="mt-4 text-lg text-text-secondary max-w-xl leading-relaxed">
-            22 本 NotebookLM 公開筆記本，涵蓋教師應用、TBCL 華語教學、學生學習、國文科等主題
+            22 本 NotebookLM 公開筆記本 · 22 個 Gemini Gems 工具集
           </p>
         </div>
       </section>
@@ -89,7 +94,12 @@ export default function ResourcesPage() {
       {/* ── Stats bar ────────────────────────────────────── */}
       <section className="border-b border-border-dark bg-bg-primary">
         <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {statsBar.map((s) => (
+          {[
+            { value: "22", label: "公開筆記本" },
+            { value: "22", label: "Gemini Gems" },
+            { value: "6",  label: "筆記本分類" },
+            { value: "7",  label: "Gems 分類" },
+          ].map((s) => (
             <div key={s.label}>
               <span className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-medium text-text-primary block">
                 {s.value}
@@ -102,16 +112,29 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* ── Notebooks ─────────────────────────────────────── */}
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* ── NotebookLM ───────────────────────────────────────  */}
+      {/* ══════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-16">
+        {/* Section label */}
+        <div className="mb-8">
+          <p className="text-xs tracking-[0.3em] text-[--color-gold] uppercase mb-1">
+            Section 01
+          </p>
+          <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-medium text-text-primary">
+            NotebookLM 公開筆記本
+          </h2>
+          <p className="text-sm text-text-secondary mt-1">22 本 · 6 分類 · 持續更新</p>
+        </div>
+
         {/* Category filter */}
         <div className="flex flex-wrap gap-2 mb-10">
-          {CATEGORIES.map((cat) => (
+          {NB_CATEGORIES.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActive(cat)}
+              onClick={() => setNbActive(cat)}
               className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
-                active === cat
+                nbActive === cat
                   ? "bg-[--color-gold] text-bg-primary font-medium"
                   : "border border-border-dark text-text-tertiary hover:text-text-secondary hover:border-text-tertiary"
               }`}
@@ -119,7 +142,7 @@ export default function ResourcesPage() {
               {cat}
               {cat !== "全部" && (
                 <span className="ml-1.5 opacity-60 text-xs">
-                  {categoryCount(cat as NotebookCategory)}
+                  {nbCount(cat as NotebookCategory)}
                 </span>
               )}
             </button>
@@ -128,7 +151,7 @@ export default function ResourcesPage() {
 
         {/* Notebook grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filtered.map((nb) => (
+          {filteredNb.map((nb) => (
             <a
               key={nb.url}
               href={nb.url}
@@ -147,9 +170,77 @@ export default function ResourcesPage() {
             </a>
           ))}
         </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* ── Gemini Gems ──────────────────────────────────────  */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <section className="px-6 md:px-12 lg:px-24 py-16 bg-bg-secondary border-t border-border-dark">
+        {/* Section label */}
+        <div className="mb-8">
+          <p className="text-xs tracking-[0.3em] text-[--color-gold] uppercase mb-1">
+            Section 02
+          </p>
+          <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-medium text-text-primary">
+            Gemini Gems 工具集
+          </h2>
+          <p className="text-sm text-text-secondary mt-1">22 個工具 · 7 分類</p>
+        </div>
+
+        {/* Gem category filter */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          <button
+            onClick={() => setGemActive(GEM_ALL)}
+            className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+              gemActive === GEM_ALL
+                ? "bg-[--color-gold] text-bg-primary font-medium"
+                : "border border-border-dark text-text-tertiary hover:text-text-secondary hover:border-text-tertiary"
+            }`}
+          >
+            全部
+          </button>
+          {gemCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setGemActive(cat)}
+              className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                gemActive === cat
+                  ? "bg-[--color-gold] text-bg-primary font-medium"
+                  : "border border-border-dark text-text-tertiary hover:text-text-secondary hover:border-text-tertiary"
+              }`}
+            >
+              {cat}
+              <span className="ml-1.5 opacity-60 text-xs">
+                {gems.filter((g) => g.cat === cat).length}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Gems grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {filteredGems.map((gem) => (
+            <a
+              key={gem.url + gem.name}
+              href={gem.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border-dark bg-bg-primary rounded-xl p-5 hover:border-text-tertiary transition-colors group block"
+            >
+              <span className="text-3xl mb-3 block">{gem.icon}</span>
+              <h3 className="text-sm font-medium text-text-primary mb-1 leading-snug">
+                {gem.name}
+              </h3>
+              <span className="text-xs text-text-tertiary">{gem.cat}</span>
+              <p className="text-xs text-[--color-gold] mt-3 group-hover:opacity-70 transition-opacity">
+                開啟 Gem →
+              </p>
+            </a>
+          ))}
+        </div>
 
         <p className="text-xs text-text-tertiary mt-10 pt-4 border-t border-border-dark">
-          共 {notebooks.length} 本公開筆記本 · 由吳奇製作並持續更新
+          共 {notebooks.length} 本筆記本 · {gems.length} 個 Gems · 由吳奇製作並持續更新
         </p>
       </section>
     </main>

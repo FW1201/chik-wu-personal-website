@@ -75,7 +75,7 @@ export default function ProjectsPage() {
         style={{
           backgroundImage: "url('/images/projects-hero.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "center 65%",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/20 via-bg-primary/60 to-bg-primary" />

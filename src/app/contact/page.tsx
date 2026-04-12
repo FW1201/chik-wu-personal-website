@@ -33,7 +33,7 @@ const socialLinks = [
   { name: "Instagram", url: "https://www.instagram.com/fw_1201",                               icon: <Camera className="w-5 h-5" /> },
   { name: "YouTube",   url: "https://www.youtube.com/@kevinwu1201",                             icon: <Video  className="w-5 h-5" /> },
   { name: "Facebook",  url: "https://www.facebook.com/profile.php?id=100064094937977",          icon: <Globe  className="w-5 h-5" /> },
-  { name: "Email",     url: "mailto:wu.k.chi@gmail.com",                                        icon: <Mail   className="w-5 h-5" /> },
+  { name: "Email",     url: "mailto:kevinwu@gtrainerdemo.jdn2023.com",                                        icon: <Mail   className="w-5 h-5" /> },
 ];
 
 export default function ContactPage() {
@@ -43,7 +43,7 @@ export default function ContactPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const mailtoHref = `mailto:wu.k.chi@gmail.com?subject=${encodeURIComponent(
+  const mailtoHref = `mailto:kevinwu@gtrainerdemo.jdn2023.com?subject=${encodeURIComponent(
     `[${form.subject}] 來自 ${form.name}`
   )}&body=${encodeURIComponent(form.message)}`;
 
@@ -55,7 +55,7 @@ export default function ContactPage() {
         style={{
           backgroundImage: "url('/images/contact-hero.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center top",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/65 to-bg-primary" />
@@ -129,9 +129,9 @@ export default function ContactPage() {
                 <Mail className="w-5 h-5 text-text-tertiary" />
                 <h3 className="text-sm text-text-tertiary uppercase tracking-wide">Email</h3>
               </div>
-              <a href="mailto:wu.k.chi@gmail.com"
+              <a href="mailto:kevinwu@gtrainerdemo.jdn2023.com"
                  className="text-text-primary hover:text-text-secondary transition-colors text-sm break-all">
-                wu.k.chi@gmail.com
+                kevinwu@gtrainerdemo.jdn2023.com
               </a>
             </Card>
 
