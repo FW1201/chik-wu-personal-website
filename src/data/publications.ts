@@ -14,6 +14,7 @@ export interface Paper {
   year: string;
   status: "published" | "thesis" | "submitted" | "pending";
   doi?: string;
+  highlight?: boolean;
   tags: string[];
 }
 
@@ -58,26 +59,32 @@ export const papers: Paper[] = [
     tags: ["語料庫", "構式語法", "碩論"],
   },
   {
-    title: "AI輔助華語教材編寫之初探：推理語言模型於教材內容設計實務應用",
-    authors: "吳奇",
-    year: "投稿中",
-    status: "submitted",
-    tags: ["AI教育", "華語教學"],
+    title: "反義構式「有X有Y」之探究及教學啟示",
+    titleEn: "A Case Study of Contrastive Construction \"yǒu X yǒu Y\" and Pedagogical Implications",
+    authors: "吳奇、蕭惠貞",
+    journal: "國立臺灣師範大學華語文教學系",
+    year: "待發表",
+    status: "pending",
+    highlight: true,
+    tags: ["構式語法", "教學"],
   },
   {
     title: "生成式AI編製TBCL華語數位教材探索",
     titleEn: "Exploring the Path of Compiling TBCL Chinese Digital Teaching Materials with Generative AI",
     authors: "Wu, C.",
-    year: "待發表",
+    journal: "學術研討會",
+    year: "2024",
     status: "pending",
+    doi: "https://conference.pixel-online.net/library_scheda.php?id_abs=6284",
+    highlight: true,
     tags: ["AI教育", "TBCL"],
   },
   {
-    title: "反義構式「有X有Y」之探究及教學啟示",
-    authors: "吳奇、蕭惠貞",
-    year: "待發表",
-    status: "pending",
-    tags: ["構式語法", "教學"],
+    title: "AI輔助華語教材編寫之初探：推理語言模型於教材內容設計實務應用",
+    authors: "吳奇",
+    year: "投稿中",
+    status: "submitted",
+    tags: ["AI教育", "華語教學"],
   },
   {
     title: "性向發展與社會語用能力發展探究",

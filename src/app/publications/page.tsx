@@ -8,9 +8,9 @@ import { ExternalLink } from "lucide-react";
 
 const statusConfig: Record<string, { label: string; className: string }> = {
   published: { label: "已發表", className: "bg-[#2a2a2a] text-[#a0a0a0] border border-[#3a3a3a]" },
-  thesis: { label: "碩士論文", className: "bg-[#1a1a1a] text-text-primary border border-[#4a4a4a]" },
+  thesis:    { label: "碩士論文", className: "bg-[#1a1a1a] text-text-primary border border-[#4a4a4a]" },
   submitted: { label: "投稿中", className: "bg-[#2a2a1a] text-[#c0b060] border border-[#3a3a2a]" },
-  pending: { label: "待發表", className: "bg-[#1a1a1a] text-text-tertiary border border-border-dark" },
+  pending:   { label: "待發表", className: "bg-[#1a1a1a] text-text-tertiary border border-border-dark" },
 };
 
 const forumLinks = [
@@ -18,6 +18,10 @@ const forumLinks = [
   { label: "2025 AI 素養教育論壇", href: "https://flipedu.parenting.com.tw/event/114" },
   { label: "2026 AI 素養教育論壇", href: "https://flipedu.parenting.com.tw/event/145" },
 ];
+
+const visiblePapers = papers.filter(
+  (p) => p.status === "published" || p.status === "thesis" || p.highlight === true
+);
 
 export default function PublicationsPage() {
   const [activeTab, setActiveTab] = useState<"articles" | "papers">("articles");
@@ -78,7 +82,7 @@ export default function PublicationsPage() {
       <section className="px-6 md:px-12 lg:px-24 pb-24">
         {activeTab === "articles" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {articles.map((article) => (
+            {articles.map((article) =>
               article.url ? (
                 <a
                   key={article.id}
@@ -89,10 +93,11 @@ export default function PublicationsPage() {
                 >
                   <Card className="h-full transition-colors group-hover:border-text-tertiary">
                     <div className="flex items-start justify-between gap-2 mb-3">
-                      <p className="text-xs text-text-tertiary tracking-wide">
-                        {article.date}
-                      </p>
-                      <ExternalLink size={13} className="text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5" />
+                      <p className="text-xs text-text-tertiary tracking-wide">{article.date}</p>
+                      <ExternalLink
+                        size={13}
+                        className="text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5"
+                      />
                     </div>
                     <h3 className="text-text-primary font-medium leading-relaxed mb-4">
                       {article.title}
@@ -111,9 +116,7 @@ export default function PublicationsPage() {
                 </a>
               ) : (
                 <Card key={article.id}>
-                  <p className="text-xs text-text-tertiary mb-3 tracking-wide">
-                    {article.date}
-                  </p>
+                  <p className="text-xs text-text-tertiary mb-3 tracking-wide">{article.date}</p>
                   <h3 className="text-text-primary font-medium leading-relaxed mb-4">
                     {article.title}
                   </h3>
@@ -129,63 +132,54 @@ export default function PublicationsPage() {
                   </div>
                 </Card>
               )
-            ))}
+            )}
           </div>
         )}
 
         {activeTab === "papers" && (
-          <div className="flex flex-col gap-5">
-            {papers.map((paper, i) => (
-              <Card key={i}>
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <h3 className="text-text-primary font-medium leading-relaxed">
-                        {paper.title}
-                      </h3>
-                      {paper.titleEn && (
-                        <p className="text-sm text-text-tertiary mt-1 italic">
-                          {paper.titleEn}
-                        </p>
-                      )}
-                    </div>
+          <div className="max-w-3xl">
+            <ul className="divide-y divide-border-dark">
+              {visiblePapers.map((paper, i) => (
+                <li key={i} className="py-6 flex items-start gap-4">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-text-primary leading-relaxed">
+                      {paper.title}
+                    </p>
+                    {paper.titleEn && (
+                      <p className="text-xs text-text-tertiary mt-0.5 italic">
+                        {paper.titleEn}
+                      </p>
+                    )}
+                    <p className="text-xs text-text-tertiary mt-2">
+                      {paper.authors}
+                      {paper.journal && ` · ${paper.journal}`}
+                      {` · ${paper.year}`}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3 flex-shrink-0 mt-0.5">
                     <span
-                      className={`px-3 py-1 text-xs rounded-full whitespace-nowrap ${statusConfig[paper.status].className}`}
+                      className={`px-2.5 py-1 text-xs rounded-full whitespace-nowrap ${statusConfig[paper.status].className}`}
                     >
                       {statusConfig[paper.status].label}
                     </span>
-                  </div>
-
-                  <p className="text-sm text-text-secondary">{paper.authors}</p>
-
-                  <div className="flex items-center gap-4 text-sm text-text-tertiary">
-                    {paper.journal && <span>{paper.journal}</span>}
-                    <span>{paper.year}</span>
                     {paper.doi && (
                       <a
-                        href={`https://doi.org/${paper.doi}`}
+                        href={
+                          paper.doi.startsWith("http")
+                            ? paper.doi
+                            : `https://doi.org/${paper.doi}`
+                        }
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-text-secondary hover:text-text-primary transition-colors underline underline-offset-4"
+                        className="text-xs text-[--color-gold] hover:opacity-70 transition-opacity whitespace-nowrap"
                       >
-                        DOI ↗
+                        連結↗
                       </a>
                     )}
                   </div>
-
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    {paper.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 text-xs rounded-full bg-bg-secondary text-text-tertiary border border-border-dark"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Card>
-            ))}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </section>

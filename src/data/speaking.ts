@@ -12,34 +12,34 @@ export const speakingStats = {
 
 export const milestones = [
   {
-    date: "2023-03",
-    title: "首場教師研習",
-    description: "踏入講師領域，以 MyViewBoard 互動教學為主題",
+    date: "2023-01",
+    title: "首場演講",
+    description: "大華中學 myViewboard 電子白板應用教學",
   },
   {
-    date: "2023-09",
+    date: "2023-11",
+    title: "首場國際學術演講",
+    description: "世界華語文學會 — 當教材編輯遇上生成式AI",
+  },
+  {
+    date: "2024-05",
     title: "第 50 場演講",
-    description: "主題轉向 ChatGPT 教育應用，場次快速成長",
-  },
-  {
-    date: "2024-06",
-    title: "第 100 場演講",
-    description: "NotebookLM 系列成為最受歡迎主題",
+    description: "AIT × 關鍵評論網 GAIWeek 論壇參與",
   },
   {
     date: "2024-11",
-    title: "國際演講 — USC",
-    description: "受邀至美國南加州大學分享 AI 教育經驗",
+    title: "第 100 場演講",
+    description: "教育科技展 2024 — Google AI 與語文教育場域",
   },
   {
     date: "2025-03",
-    title: "國際演講 — PSU",
-    description: "賓州州立大學 AI 教育工作坊",
+    title: "2025 AI素養教育論壇策展",
+    description: "翻轉教育年度旗艦論壇策展人 & 國際分場",
   },
   {
-    date: "2025-12",
-    title: "第 134 場演講",
-    description: "主題涵蓋 AI 素養教育與 Vibe Coding",
+    date: "2026-03",
+    title: "2026 AI素養教育論壇策展",
+    description: "數位敘事力期刊 × 翻轉教育平台年度論壇主持",
   },
 ];
 
@@ -73,51 +73,51 @@ export const topicEvolution = [
 
 export const featuredTalks = [
   {
+    date: "2023-11",
+    topic: "當教材編輯遇上生成式AI",
+    venue: "世界華語文學會",
+    hours: 1,
+  },
+  {
+    date: "2024-05",
+    topic: "GAIWeek：GAI論壇",
+    venue: "AIT × 關鍵評論網",
+    hours: 0.5,
+  },
+  {
+    date: "2024-08",
+    topic: "從任務指派到思維引導：從Chatbot到Agent",
+    venue: "PaGamO數位奇航年會",
+    hours: 1,
+  },
+  {
     date: "2024-11",
-    topic: "AI 融入教學的實踐與反思",
-    venue: "USC 南加州大學",
+    topic: "Google：AI與語文教育潛能探索",
+    venue: "教育科技展 2024",
+    hours: 0.5,
+  },
+  {
+    date: "2025-03",
+    topic: "AI Literacy Day：2025 AI素養教育論壇",
+    venue: "翻轉教育 × 親子天下",
     hours: 3,
   },
   {
     date: "2025-03",
-    topic: "Vibe Coding 工作坊",
-    venue: "PSU 賓州州立大學",
-    hours: 6,
+    topic: "生成式AI與華語文教學實踐",
+    venue: "南加大中文學校教師聯合會",
+    hours: 1.5,
   },
   {
-    date: "2025-06",
-    topic: "NotebookLM 教學應用",
-    venue: "Google for Education 年會",
-    hours: 2,
-  },
-  {
-    date: "2025-09",
-    topic: "AI 素養教育論壇",
-    venue: "教育科技展",
-    hours: 2,
-  },
-  {
-    date: "2025-10",
-    topic: "Gemini 教育實戰",
-    venue: "Gemini Academy",
+    date: "2025-07",
+    topic: "Google AI 來一夏！",
+    venue: "Google for Education",
     hours: 3,
-  },
-  {
-    date: "2026-01",
-    topic: "Claude Code 教育 Skills",
-    venue: "GenerativeAI 年會",
-    hours: 2,
   },
   {
     date: "2026-03",
-    topic: "AI 時代的媒體素養",
-    venue: "全國教師研習中心",
-    hours: 3,
-  },
-  {
-    date: "2026-04",
-    topic: "Vibe Coding × 教育",
-    venue: "桃園市教育局",
+    topic: "AI素養教育論壇 策展人 & 主持人",
+    venue: "數位敘事力期刊 × 翻轉教育平台",
     hours: 3,
   },
 ];

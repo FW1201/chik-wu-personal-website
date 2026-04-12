@@ -19,6 +19,12 @@
   --color-border-light: #e0e0e0;
   --color-ring: #333333;
 
+  /* 金屬金色系 */
+  --color-gold:        #C9A84C;
+  --color-gold-bright: #E8D080;
+  --color-gold-dark:   #8B6914;
+  --color-gold-subtle: rgba(201, 168, 76, 0.08);
+
   --font-heading: 'Playfair Display', 'Georgia', serif;
   --font-body: 'Inter', 'Noto Sans TC', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -38,23 +44,3 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Leaflet overrides for dark theme */
-.leaflet-container {
-  background: #141414 !important;
-}
-
-.leaflet-control-zoom a {
-  background: #1a1a1a !important;
-  color: #f0f0f0 !important;
-  border-color: #2a2a2a !important;
-}
-
-.leaflet-control-attribution {
-  background: rgba(10, 10, 10, 0.8) !important;
-  color: #707070 !important;
-  font-size: 10px !important;
-}
-
-.leaflet-control-attribution a {
-  color: #a0a0a0 !important;
-}
