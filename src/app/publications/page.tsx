@@ -6,10 +6,10 @@ import { Card } from "@/components/ui/Card";
 import { ExternalLink } from "lucide-react";
 
 const statusConfig: Record<string, { label: string; className: string }> = {
-  published: { label: "已發表", className: "bg-[#2a2a2a] text-[#a0a0a0] border border-[#3a3a3a]" },
-  thesis:    { label: "碩士論文", className: "bg-[#1a1a1a] text-text-primary border border-[#4a4a4a]" },
-  submitted: { label: "投稿中", className: "bg-[#2a2a1a] text-[#c0b060] border border-[#3a3a2a]" },
-  pending:   { label: "待發表", className: "bg-[#1a1a1a] text-text-tertiary border border-border-dark" },
+  published: { label: "已發表", className: "bg-gray-100 text-gray-600 border border-gray-300" },
+  thesis:    { label: "碩士論文", className: "bg-gray-50 text-gray-900 border border-gray-300" },
+  submitted: { label: "投稿中", className: "bg-yellow-50 text-yellow-700 border border-yellow-200" },
+  pending:   { label: "待發表", className: "bg-gray-50 text-gray-400 border border-gray-200" },
 };
 
 const forumLinks = [
@@ -36,15 +36,15 @@ export default function PublicationsPage() {
           backgroundPosition: "center 65%",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/65 to-bg-primary" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-bg-primary" />
         <div className="relative z-10">
-          <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-4">
+          <p className="text-xs tracking-[0.3em] text-white/50 uppercase mb-4">
             Publications · Research
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-medium text-text-primary leading-tight mb-3">
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-medium text-white leading-tight mb-3">
             著作與研究
           </h1>
-          <p className="text-text-secondary">17 篇翻轉教育文章 · 8 篇學術論文</p>
+          <p className="text-white/70">17 篇翻轉教育文章 · 8 篇學術論文</p>
         </div>
       </section>
 
@@ -56,7 +56,7 @@ export default function PublicationsPage() {
             onClick={() => setActiveTab("articles")}
             className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-colors ${
               activeTab === "articles"
-                ? "bg-text-primary text-text-dark"
+                ? "bg-text-primary text-bg-primary"
                 : "border border-border-dark text-text-secondary hover:text-text-primary"
             }`}
           >
@@ -66,7 +66,7 @@ export default function PublicationsPage() {
             onClick={() => setActiveTab("papers")}
             className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-colors ${
               activeTab === "papers"
-                ? "bg-text-primary text-text-dark"
+                ? "bg-text-primary text-bg-primary"
                 : "border border-border-dark text-text-secondary hover:text-text-primary"
             }`}
           >

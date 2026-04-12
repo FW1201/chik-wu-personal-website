@@ -48,15 +48,15 @@ export default function ResourcesPage() {
           backgroundPosition: "center 65%",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/20 via-bg-primary/60 to-bg-primary" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-bg-primary" />
         <div className="relative z-10 max-w-4xl">
-          <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-4">
+          <p className="text-xs tracking-[0.3em] text-white/50 uppercase mb-4">
             NotebookLM · Gemini Gems
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-medium text-text-primary leading-tight">
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-medium text-white leading-tight">
             資源中心
           </h1>
-          <p className="mt-4 text-lg text-text-secondary max-w-xl leading-relaxed">
+          <p className="mt-4 text-lg text-white/70 max-w-xl leading-relaxed">
             22 本 NotebookLM 公開筆記本 · 22 個 Gemini Gems 工具集
           </p>
         </div>

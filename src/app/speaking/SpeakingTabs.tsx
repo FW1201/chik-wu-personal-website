@@ -148,7 +148,7 @@ function MilestonesPanel() {
               {/* Gold dot */}
               <div
                 className="w-3 h-3 rounded-full border-2 flex-shrink-0"
-                style={{ borderColor: "#C9A84C", background: "#0a0a0a" }}
+                style={{ borderColor: "#C9A84C", background: "var(--color-bg-primary)" }}
               />
               {/* Right line (hidden for last item) */}
               <div className={`flex-1 h-px ${i === milestones.length - 1 ? "invisible" : "bg-border-dark"}`} />

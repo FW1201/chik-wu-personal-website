@@ -58,15 +58,15 @@ export default function ContactPage() {
           backgroundPosition: "50% 30%",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/65 to-bg-primary" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-bg-primary" />
         <div className="relative z-10 max-w-5xl">
-          <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-4">
+          <p className="text-xs tracking-[0.3em] text-white/50 uppercase mb-4">
             Speaker · Trainer · Curator
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-medium text-text-primary leading-none">
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-medium text-white leading-none">
             邀請演講
           </h1>
-          <p className="mt-4 text-lg text-text-secondary">
+          <p className="mt-4 text-lg text-white/70">
             歡迎講座邀約與合作洽詢
           </p>
         </div>

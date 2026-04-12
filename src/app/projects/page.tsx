@@ -78,15 +78,15 @@ export default function ProjectsPage() {
           backgroundPosition: "center 65%",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/20 via-bg-primary/60 to-bg-primary" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-bg-primary" />
         <div className="relative z-10 max-w-4xl">
-          <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-4">
+          <p className="text-xs tracking-[0.3em] text-white/50 uppercase mb-4">
             Vibe Coding · Open Source
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-medium text-text-primary leading-tight">
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-medium text-white leading-tight">
             氛圍開發專案
           </h1>
-          <p className="mt-4 text-lg text-text-secondary max-w-xl leading-relaxed">
+          <p className="mt-4 text-lg text-white/70 max-w-xl leading-relaxed">
             Chrome 擴充、GAS 自動化、AI 應用與開源 Skills — 以 Vibe Coding 理念打造教育工具
           </p>
         </div>

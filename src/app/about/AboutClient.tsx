@@ -59,7 +59,7 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
   return (
     <main className="min-h-screen bg-bg-primary">
 
-      {/* ── Section 1: Full-screen Hero ───────────────────── */}
+      {/* ── Hero（全螢幕）────────────────────────────────── */}
       <section
         className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-24"
         style={{
@@ -68,20 +68,37 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
           backgroundPosition: "50% 30%",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/10 via-bg-primary/55 to-bg-primary" />
-        <div className="relative z-10 text-center max-w-4xl">
-          <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/55 to-black/70" />
+
+        {/* 主標 */}
+        <div className="relative z-10 text-center max-w-4xl flex flex-col items-center">
+          <p className="text-xs tracking-[0.3em] text-white/50 uppercase mb-4">
             AI Educator · Researcher · Developer
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-6xl md:text-7xl lg:text-8xl font-medium text-text-primary leading-tight">
+          <h1 className="font-[family-name:var(--font-playfair)] text-6xl md:text-7xl lg:text-8xl font-medium text-white leading-tight">
             關於吳奇
           </h1>
-          <p className="mt-6 text-lg text-text-secondary max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
             在語言與科技之間，尋找教育的可能
           </p>
+
+          {/* Stats strip */}
+          <div className="grid grid-cols-4 gap-8 mt-14 pt-8 border-t border-white/20 w-full max-w-lg">
+            {stats.map((s) => (
+              <div key={s.label} className="text-center">
+                <span className="font-[family-name:var(--font-playfair)] text-2xl font-medium text-white block">
+                  {s.value}
+                </span>
+                <span className="text-[10px] text-white/50 mt-1 block tracking-widest uppercase">
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
+
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-text-tertiary">
+        <div className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-white/40">
           <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
           <svg
             className="w-4 h-4 animate-bounce"
@@ -97,72 +114,11 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
         </div>
       </section>
 
-      {/* ── Section 2: Stats + Directory + Credentials ────── */}
-      <section className="px-6 md:px-12 lg:px-24 py-20 bg-bg-primary">
-        <div className="max-w-4xl">
+      {/* ── 第一列：簡介（左）+ 學歷/認證（右，上下排）── */}
+      <section className="px-6 md:px-12 lg:px-24 py-16 bg-bg-primary">
+        <div className="max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12">
 
-          {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14 text-center">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <span className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-medium text-text-primary block">
-                  {s.value}
-                </span>
-                <span className="text-xs text-text-tertiary mt-1 block tracking-wide uppercase">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Directory link cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-            {directoryLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="border border-border-dark rounded-xl p-5 hover:border-text-tertiary transition-colors group block"
-              >
-                <h3 className="font-[family-name:var(--font-playfair)] text-lg text-text-primary">
-                  {item.label}
-                </h3>
-                <p className="text-xs text-text-tertiary mt-1">{item.sub}</p>
-                <span className="text-xs text-[--color-gold] mt-3 block group-hover:opacity-70 transition-opacity">
-                  前往 →
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          {/* 學歷 + 認證 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-border-dark">
-            <div>
-              <h3 className="text-xs tracking-[0.2em] text-text-tertiary uppercase mb-3">學歷</h3>
-              <p className="text-sm text-text-secondary">{profile.education}</p>
-              <p className="text-xs text-text-tertiary mt-1">{profile.undergrad}</p>
-            </div>
-            <div>
-              <h3 className="text-xs tracking-[0.2em] text-text-tertiary uppercase mb-3">認證資格</h3>
-              <div className="flex flex-wrap gap-2">
-                {profile.certifications.map((cert) => (
-                  <span
-                    key={cert}
-                    className="text-xs text-text-secondary border border-border-dark rounded-full px-3 py-1"
-                  >
-                    {cert}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 3: 簡介 + Slogan ──────────────────────── */}
-      <section className="px-6 md:px-12 lg:px-24 py-16 bg-bg-secondary border-t border-border-dark">
-        <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
-          {/* 左欄：簡介 */}
+          {/* 左：簡介 */}
           <div>
             <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-medium text-text-primary mb-4">
               簡介
@@ -180,29 +136,84 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
             </ul>
           </div>
 
-          {/* 右欄：Slogan 三段式 */}
-          <div className="flex flex-col justify-center">
-            <div className="border-l-2 border-[--color-gold] pl-6 py-2 space-y-4">
-              {beliefItems.map((item) => (
-                <p
-                  key={item.key}
-                  className="font-[family-name:var(--font-playfair)] text-lg md:text-xl text-text-primary leading-snug"
-                >
-                  <span className="text-[--color-gold] block text-sm font-medium tracking-wider uppercase mb-1">
-                    {item.key}
+          {/* 右：學歷（上）+ 認證（下）*/}
+          <div className="flex flex-col gap-8">
+            {/* 學歷 */}
+            <div className="bg-bg-secondary rounded-xl p-6 border border-border-dark">
+              <h3 className="text-xs tracking-[0.2em] text-text-tertiary uppercase mb-3">學歷</h3>
+              <p className="text-sm font-medium text-text-primary">{profile.education}</p>
+              <p className="text-xs text-text-tertiary mt-1">{profile.undergrad}</p>
+            </div>
+
+            {/* 認證 */}
+            <div className="bg-bg-secondary rounded-xl p-6 border border-border-dark">
+              <h3 className="text-xs tracking-[0.2em] text-text-tertiary uppercase mb-3">認證資格</h3>
+              <div className="flex flex-wrap gap-2">
+                {profile.certifications.map((cert) => (
+                  <span
+                    key={cert}
+                    className="text-xs text-text-secondary bg-bg-primary border border-border-dark rounded-full px-3 py-1.5"
+                  >
+                    {cert}
                   </span>
-                  {item.value}
-                </p>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Section 4: Tabs ───────────────────────────────── */}
-      <section className="px-6 md:px-12 lg:px-24 pb-24 bg-bg-primary border-t border-border-dark">
-        <div className="max-w-4xl pt-16">
-          <AboutTabs roles={profile.roles} />
+      {/* ── 第二列：理念（左）+ 輪播 Tabs（右）────────── */}
+      <section className="px-6 md:px-12 lg:px-24 py-16 bg-bg-secondary border-t border-border-dark">
+        <div className="max-w-5xl grid grid-cols-1 lg:grid-cols-[240px,1fr] gap-10 items-start">
+
+          {/* 左：理念三段式 */}
+          <div className="lg:sticky lg:top-24">
+            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-medium text-text-primary mb-6">
+              理念
+            </h2>
+            <div className="border-l-2 border-[--color-gold] pl-5 py-1 space-y-5">
+              {beliefItems.map((item) => (
+                <div key={item.key}>
+                  <span className="text-[--color-gold] block text-xs font-semibold tracking-[0.15em] uppercase mb-1">
+                    {item.key}
+                  </span>
+                  <p className="font-[family-name:var(--font-playfair)] text-base text-text-primary leading-snug">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 右：Tabs */}
+          <div className="min-w-0">
+            <AboutTabs roles={profile.roles} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── 第三列（最後）：大型目錄按鈕 ───────────────── */}
+      <section className="px-6 md:px-12 lg:px-24 py-16 bg-bg-primary border-t border-border-dark">
+        <div className="max-w-5xl">
+          <p className="text-xs tracking-[0.3em] text-text-tertiary uppercase mb-8">深入了解</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {directoryLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block bg-bg-secondary border border-border-dark rounded-xl p-7 hover:border-text-tertiary hover:bg-bg-card transition-colors group"
+              >
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-medium text-text-primary mb-1">
+                  {item.label}
+                </h3>
+                <p className="text-xs text-text-tertiary mb-4">{item.sub}</p>
+                <span className="text-sm text-[--color-gold] group-hover:opacity-70 transition-opacity">
+                  前往 →
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
