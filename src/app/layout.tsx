@@ -25,6 +25,7 @@ const notoSansTC = Noto_Sans_TC({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.jdn2023.com"),
   title: {
     default: "吳奇 Chi. K. Wu — AI Education Researcher • Speaker • Developer",
     template: "%s | 吳奇 Chi. K. Wu",
@@ -44,8 +45,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "吳奇 Chi. K. Wu",
     description: "AI Education Researcher • Speaker • Developer",
+    url: "https://www.jdn2023.com",
+    siteName: "吳奇 Chi. K. Wu",
     type: "website",
     locale: "zh_TW",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "吳奇 Chi. K. Wu",
+    description: "AI Education Researcher • Speaker • Developer",
   },
 };
 
