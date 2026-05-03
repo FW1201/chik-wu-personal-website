@@ -11,6 +11,9 @@ import {
   AtSign,
   BookOpen,
   Send,
+  CheckCircle,
+  XCircle,
+  X,
 } from "lucide-react";
 
 function FacebookIcon() {
@@ -22,6 +25,8 @@ function FacebookIcon() {
   );
 }
 import { Card } from "@/components/ui/Card";
+
+type ToastState = { type: "success" | "error"; message: string } | null;
 
 const topics = [
   "AI教育應用",
@@ -50,17 +55,68 @@ const socialLinks = [
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "講座邀約", message: "" });
+  const [sending, setSending] = useState(false);
+  const [toast, setToast] = useState<ToastState>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const mailtoHref = `mailto:kevinwu@gtrainerdemo.jdn2023.com?subject=${encodeURIComponent(
-    `[${form.subject}] 來自 ${form.name}`
-  )}&body=${encodeURIComponent(form.message)}`;
+  const dismissToast = () => setToast(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) {
+      setToast({ type: "error", message: "請填寫姓名、電子郵件與訊息內容" });
+      return;
+    }
+
+    setSending(true);
+    setToast(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setToast({ type: "success", message: "訊息已成功送出，我將盡快回覆您！" });
+        setForm({ name: "", email: "", subject: "講座邀約", message: "" });
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setToast({ type: "error", message: data.error ?? "發送失敗，請稍後再試或直接來信" });
+      }
+    } catch {
+      setToast({ type: "error", message: "網路錯誤，請確認連線後再試" });
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-bg-primary">
+      {/* ── Toast 通知 ───────────────────────────────────── */}
+      {toast && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-start gap-3 max-w-sm w-full shadow-lg"
+             style={{
+               background: "#ffffff",
+               border: `1px solid ${toast.type === "success" ? "#16a34a" : "#dc2626"}`,
+               borderLeft: `4px solid ${toast.type === "success" ? "#16a34a" : "#dc2626"}`,
+               borderRadius: "8px",
+               padding: "16px",
+             }}>
+          {toast.type === "success"
+            ? <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "#16a34a" }} />
+            : <XCircle     className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "#dc2626" }} />}
+          <p className="text-sm flex-1" style={{ color: "#111111" }}>{toast.message}</p>
+          <button onClick={dismissToast} className="flex-shrink-0 text-text-tertiary hover:text-text-primary transition-colors">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
       {/* ── Hero ─────────────────────────────────────────── */}
       <section
         className="relative min-h-[50vh] flex flex-col justify-end px-6 md:px-12 lg:px-24 pt-32 pb-20"
@@ -92,7 +148,7 @@ export default function ContactPage() {
             <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-medium text-text-primary mb-8">
               聯繫表單
             </h2>
-            <div className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               {/* Name */}
               <div>
                 <label htmlFor="name" className="block text-sm text-text-secondary mb-2">姓名</label>
@@ -125,12 +181,15 @@ export default function ContactPage() {
                           className="w-full bg-bg-secondary border border-border-dark rounded-lg px-4 py-3 text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-text-tertiary transition-colors resize-none" />
               </div>
               {/* Submit */}
-              <a href={mailtoHref}
-                 className="inline-flex items-center gap-2 border border-[--color-gold] text-[--color-gold] px-8 py-3 text-sm tracking-wide hover:bg-[--color-gold] hover:text-bg-primary transition-colors duration-300">
+              <button
+                type="submit"
+                disabled={sending}
+                className="inline-flex items-center gap-2 border border-[--color-gold] text-[--color-gold] px-8 py-3 text-sm tracking-wide hover:bg-[--color-gold] hover:text-bg-primary transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 <Send className="w-4 h-4" />
-                發送郵件
-              </a>
-            </div>
+                {sending ? "發送中…" : "發送郵件"}
+              </button>
+            </form>
           </div>
 
           {/* Right: Info Cards */}
