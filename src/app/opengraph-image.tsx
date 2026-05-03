@@ -16,47 +16,46 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "flex-start",
-          background: "linear-gradient(135deg, #0D1117 0%, #1a2332 60%, #0D1117 100%)",
+          background: "#ffffff",
           padding: "80px",
           fontFamily: "sans-serif",
           position: "relative",
         }}
       >
-        {/* 裝飾線條 */}
+        {/* 左側金色細線 */}
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "4px",
-            height: "100%",
-            background: "linear-gradient(180deg, #00D4FF, #7B2FFF)",
+            top: "80px",
+            left: "80px",
+            width: "3px",
+            height: "220px",
+            background: "#C9A84C",
           }}
         />
+
+        {/* 底部細線 */}
         <div
           style={{
             position: "absolute",
             bottom: 0,
             left: 0,
             right: 0,
-            height: "2px",
-            background: "linear-gradient(90deg, #00D4FF, #7B2FFF, transparent)",
+            height: "3px",
+            background: "#111111",
           }}
         />
 
-        {/* 頂部標籤 */}
+        {/* 頂部網域標籤 */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             marginBottom: "40px",
-            background: "rgba(0, 212, 255, 0.1)",
-            border: "1px solid rgba(0, 212, 255, 0.3)",
-            borderRadius: "6px",
-            padding: "8px 18px",
+            marginLeft: "20px",
           }}
         >
-          <span style={{ color: "#00D4FF", fontSize: "16px", letterSpacing: "2px" }}>
+          <span style={{ color: "#888888", fontSize: "18px", letterSpacing: "1px" }}>
             jdn2023.com
           </span>
         </div>
@@ -66,9 +65,10 @@ export default async function Image() {
           style={{
             fontSize: "72px",
             fontWeight: "700",
-            color: "#E6EDF3",
+            color: "#111111",
             lineHeight: 1.1,
-            marginBottom: "16px",
+            marginBottom: "18px",
+            marginLeft: "20px",
           }}
         >
           吳奇 Chi. K. Wu
@@ -77,17 +77,29 @@ export default async function Image() {
         {/* 副標題 */}
         <div
           style={{
-            fontSize: "28px",
-            color: "#00D4FF",
+            fontSize: "26px",
+            color: "#555555",
             marginBottom: "56px",
-            letterSpacing: "0.5px",
+            marginLeft: "20px",
+            letterSpacing: "0.3px",
           }}
         >
           AI Education Researcher • Speaker • Developer
         </div>
 
+        {/* 分隔線 */}
+        <div
+          style={{
+            width: "48px",
+            height: "2px",
+            background: "#C9A84C",
+            marginBottom: "40px",
+            marginLeft: "20px",
+          }}
+        />
+
         {/* 統計數據 */}
-        <div style={{ display: "flex", gap: "48px" }}>
+        <div style={{ display: "flex", gap: "52px", marginLeft: "20px" }}>
           {[
             { value: "134+", label: "場演講" },
             { value: "17", label: "篇教育文章" },
@@ -96,19 +108,19 @@ export default async function Image() {
           ].map((stat) => (
             <div
               key={stat.label}
-              style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+              style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
             >
               <span
                 style={{
-                  fontSize: "40px",
+                  fontSize: "38px",
                   fontWeight: "700",
-                  color: "#7B2FFF",
+                  color: "#111111",
                   lineHeight: 1,
                 }}
               >
                 {stat.value}
               </span>
-              <span style={{ fontSize: "16px", color: "#8B949E", marginTop: "6px" }}>
+              <span style={{ fontSize: "15px", color: "#888888", marginTop: "6px" }}>
                 {stat.label}
               </span>
             </div>
