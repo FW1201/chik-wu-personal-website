@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 
   if (error) {
     console.error("[contact] Resend error:", JSON.stringify(error));
-    return NextResponse.json({ error: "郵件發送失敗，請稍後再試", detail: error }, { status: 500 });
+    return NextResponse.json({ error: "郵件發送失敗，請稍後再試" }, { status: 500 });
   }
 
   return NextResponse.json({ success: true });
