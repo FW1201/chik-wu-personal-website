@@ -22,10 +22,10 @@ export const profile = {
   flipedu: "https://flipedu.parenting.com.tw/author/1112",
   stats: [
     { value: 134, suffix: "+", label: "場演講" },
-    { value: 17, suffix: "", label: "篇教育文章" },
+    { value: 20, suffix: "", label: "篇教育文章" },
     { value: 8, suffix: "", label: "篇學術論文" },
     { value: 11, suffix: "", label: "個開發專案" },
-    { value: 45, suffix: "", label: "個 AI Skills" },
+    { value: 92, suffix: "+", label: "個 AI Skills" },
   ],
   roles: [
     {
@@ -33,8 +33,8 @@ export const profile = {
       name: "主編",
       nameEn: "Editor",
       icon: "PenLine",
-      description: "數位敘事力期刊主編，翻轉教育平台 17 篇投稿",
-      stat: "17 篇文章 · 1,265 篇 FB 貼文",
+      description: "數位敘事力期刊主編，翻轉教育平台 20 篇投稿",
+      stat: "20 篇文章 · 1,265 篇 FB 貼文",
     },
     {
       id: "researcher",
@@ -58,7 +58,7 @@ export const profile = {
       nameEn: "Developer",
       icon: "Code2",
       description: "Chrome Extension、Claude Skills、Vibe Coding 工具開發",
-      stat: "11 專案 · 45 Skills",
+      stat: "11 專案 · 92+ Skills",
     },
     {
       id: "speaker",

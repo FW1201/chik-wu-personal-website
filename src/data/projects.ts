@@ -131,15 +131,15 @@ export const projects: Project[] = [
 ];
 
 export const skillsOverview = {
-  total: 45,
-  version: "V3.0",
-  // tw-edu-skills repo: 3 套 37 Skills
+  total: 92,
+  version: "V6.2",
+  // tw-edu-skills repo: 3 套 59 Skills
   twEduSkills: {
-    repoTotal: 37,
+    repoTotal: 59,
     sets: [
       {
         name: "K-12 教學 Skills",
-        count: 18,
+        count: 24,
         description: "108課綱教案、素養命題、學習單、評量規準、PBL設計等",
         examples: ["tw-edu-lesson-plan-108", "tw-edu-exam-generator", "tw-edu-rubric-designer", "tw-edu-pbl-designer"],
       },
@@ -151,7 +151,7 @@ export const skillsOverview = {
       },
       {
         name: "學術研究 Skills",
-        count: 9,
+        count: 25,
         description: "研究計畫書、文獻查核、統計顧問、引用校對、學術辯證等",
         examples: ["tw-research-proposal-diamond", "tw-research-stat-consultant", "tw-research-lit-review"],
       },
@@ -160,6 +160,7 @@ export const skillsOverview = {
   // 其他獨立 Skills
   otherSkills: [
     { name: "知識工作者", count: 4, description: "社群圖卡、週報、主編工作流、社群引擎" },
-    { name: "知識庫", count: 4, description: "Notion 架構管理、入庫、整理、查詢" },
+    { name: "知識庫", count: 4, description: "JDN Wiki ingest/lint/query/management" },
+    { name: "系統 Skills", count: 24, description: "Hyperframes 框架、Superpowers、系統工具" },
   ],
 };

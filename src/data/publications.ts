@@ -36,6 +36,9 @@ export const articles: Article[] = [
   { id: "10347", title: "用AI評量強化寫作教學！讓國文老師從修正者變引導者", tags: ["寫作教學", "評量"], date: "2025-08", url: "https://flipedu.parenting.com.tw/article/10347" },
   { id: "10457", title: "AI × SEL：利己社會氛圍讓孩子們學會同理思考", tags: ["SEL", "跨域整合"], date: "2025-11", url: "https://flipedu.parenting.com.tw/article/10457" },
   { id: "10673", title: "從趨勢洞察到理念落地：2026 AI 素養教育論壇的策展思維", tags: ["教育理論", "策展"], date: "2026-03", url: "https://flipedu.parenting.com.tw/article/10673" },
+  { id: "010763", title: "AI Agent×教育現場：代理與外包之間，我們分得清嗎？", tags: ["教育理論", "AI Agent"], date: "2026-04", url: "https://flipedu.parenting.com.tw/article/010763" },
+  { id: "010780", title: "Claude 是什麼？老師怎麼用？三大模式、5個脈絡解鎖 AI 高效工作流", tags: ["AI工具", "教學實踐"], date: "2026-05", url: "https://flipedu.parenting.com.tw/article/010780" },
+  { id: "010781", title: "AI 圖像生成怎麼用在教學？教師必備設計指令與修改技巧", tags: ["AI工具", "視覺化教學"], date: "2026-05", url: "https://flipedu.parenting.com.tw/article/010781" },
 ];
 
 export const papers: Paper[] = [
