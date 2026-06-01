@@ -1,7 +1,7 @@
 export interface Project {
   name: string;
   description: string;
-  category: "Chrome Extension" | "GAS System" | "AI Studio App" | "Skills Repo" | "Gemini Gems";
+  category: "Web App" | "Chrome Extension" | "GAS System" | "AI Studio App" | "Skills Repo" | "Gemini Gems";
   status: string;
   github?: string;
   cws?: string;
@@ -10,6 +10,16 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // Web Apps
+  {
+    name: "數位敘事力教學工具箱",
+    description: "33 個自建課堂工具、22 本 NotebookLM、22 個 Gems 與 Chrome Web Store 系列入口的整合開發成果展示區",
+    category: "Web App",
+    status: "Production",
+    github: "https://github.com/FW1201/jdn-teaching-toolbox",
+    live: "https://jdn-teaching-toolbox.vercel.app",
+    tags: ["React", "Vite", "教學工具", "NotebookLM", "Gems"],
+  },
   // Chrome Extensions
   {
     name: "Chrome EDU Toolbox",
@@ -121,11 +131,11 @@ export const projects: Project[] = [
   // Gemini Gems
   {
     name: "數位敘事力期刊 Gems 大全",
-    description: "22 個 Gemini Gems 工具入口，含繪圖、教學、簡報、學術等 7 分類",
+    description: "22 個 Gemini Gems 工具入口，已整併至數位敘事力教學工具箱的 Gems 資源區",
     category: "Gemini Gems",
-    status: "22 Gems",
-    github: "https://github.com/FW1201/gemini-gems-portal",
-    live: "https://gems-portal.vercel.app",
+    status: "已整併",
+    github: "https://github.com/FW1201/jdn-teaching-toolbox",
+    live: "https://jdn-teaching-toolbox.vercel.app",
     tags: ["Gemini", "Gems", "AI工具", "教育"],
   },
 ];

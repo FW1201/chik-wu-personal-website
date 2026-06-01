@@ -7,19 +7,23 @@ export const metadata: Metadata = {
 };
 
 /* ── Category config ────────────────────────────────────── */
-const categoryOrder = ["Chrome Extension", "GAS System", "AI Studio App"] as const;
+const categoryOrder = ["Web App", "Chrome Extension", "GAS System", "AI Studio App", "Gemini Gems"] as const;
 type Category = (typeof categoryOrder)[number];
 
 const categoryLabels: Record<Category, string> = {
+  "Web App":          "整合展示 Web App",
   "Chrome Extension": "Chrome 擴充功能",
   "GAS System":       "GAS 自動化系統",
   "AI Studio App":    "AI Studio 應用",
+  "Gemini Gems":      "Gemini Gems 資源",
 };
 
 const categoryDescriptions: Record<Category, string> = {
+  "Web App":          "可直接操作與投影的整合開發成果，串接教學工具、公開筆記本與資源入口",
   "Chrome Extension": "部署於 Chrome Web Store，為教師與學習者打造的瀏覽器原生工具",
   "GAS System":       "Google Apps Script 驅動的行政自動化系統，減少重複性工作",
   "AI Studio App":    "Google AI Studio 整合應用，探索生成式 AI 於教育情境的可能",
+  "Gemini Gems":      "已整併至教學工具箱的 Gemini Gems 入口與教學資源索引",
 };
 
 /* ── Install commands ───────────────────────────────────── */
@@ -118,8 +122,9 @@ export default function ProjectsPage() {
 
       {/* ── Stats bar ────────────────────────────────────── */}
       <section className="border-b border-border-dark bg-bg-secondary">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 grid grid-cols-3 gap-8 text-center">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
+            { value: "1", label: "整合工具箱" },
             { value: "5", label: "Chrome 擴充" },
             { value: "2", label: "GAS 系統" },
             { value: "2", label: "AI 應用" },

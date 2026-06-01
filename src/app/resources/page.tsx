@@ -97,7 +97,7 @@ export default function ResourcesPage() {
           {[
             { value: "22", label: "公開筆記本" },
             { value: "22", label: "Gemini Gems" },
-            { value: "6",  label: "筆記本分類" },
+            { value: "5",  label: "筆記本分類" },
             { value: "7",  label: "Gems 分類" },
           ].map((s) => (
             <div key={s.label}>
@@ -124,7 +124,7 @@ export default function ResourcesPage() {
           <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-medium text-text-primary">
             NotebookLM 公開筆記本
           </h2>
-          <p className="text-sm text-text-secondary mt-1">22 本 · 6 分類 · 持續更新</p>
+          <p className="text-sm text-text-secondary mt-1">22 本 · 5 分類 · 持續更新</p>
         </div>
 
         {/* Category filter */}
