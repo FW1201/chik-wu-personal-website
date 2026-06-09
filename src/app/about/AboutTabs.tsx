@@ -47,7 +47,7 @@ const awards = [
   },
   {
     icon: <Mic2 className="w-5 h-5" />,
-    title: "134+ 場 AI 教育演講",
+    title: "154+ 場 AI 教育演講",
     year: "2023–2026",
     desc: "橫跨台灣各縣市學校、企業與國際場域（USC、PSU）",
   },
@@ -72,11 +72,11 @@ const roleDetails: Record<string, string> = {
   developer:
     "開發 Chrome Extension、Claude Skills 與教育科技工具，以 Vibe Coding 理念打造實用的開源教育資源，專案獲社群廣泛採用。",
   admin:
-    "在全台各級學校與教育機構進行超過 134 場 AI 與教育主題演講及工作坊，擔任 Google Certified Trainer 與 Gemini Academy 講師。",
+    "在全台各級學校與教育機構進行超過 154 場 AI 與教育主題演講及工作坊，擔任 Google Certified Trainer 與 Gemini Academy 講師。",
   speaker:
-    "在全台各級學校與教育機構進行超過 134 場 AI 與教育主題演講及工作坊，擔任 Google Certified Trainer 與 Gemini Academy 講師。",
+    "在全台各級學校與教育機構進行超過 154 場 AI 與教育主題演講及工作坊，擔任 Google Certified Trainer 與 Gemini Academy 講師。",
   learner:
-    "持續學習與建構 K-12 教育所需的 AI Skills，開發並分享超過 45 個教學技能包，實踐終身學習理念。",
+    "持續學習與建構 K-12 教育所需的 AI Skills，開發並分享超過 92 個教學技能包，實踐終身學習理念。",
 };
 
 const researchAreas = [

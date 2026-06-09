@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { notebooks, type NotebookCategory } from "@/data/notebooks";
 import { gems, gemCategories, type GemCategory } from "@/data/gems";
+import { CTASection } from "@/components/ui/CTASection";
 
 /* ── Notebook filter ────────────────────────────────────── */
 const NB_CATEGORIES = [
@@ -243,6 +244,8 @@ export default function ResourcesPage() {
           共 {notebooks.length} 本筆記本 · {gems.length} 個 Gems · 由吳奇製作並持續更新
         </p>
       </section>
+
+      <CTASection />
     </main>
   );
 }

@@ -1,12 +1,12 @@
 export const speakingStats = {
-  totalEvents: 134,
-  totalHours: 309.5,
+  totalEvents: 154,
+  totalHours: 358.5,
   yearRange: "2023–2026",
   audience: {
-    k12: 38,
-    university: 28,
-    vocational: 24,
-    corporate: 24,
+    k12: 41,
+    university: 32,
+    vocational: 28,
+    corporate: 27,
   },
 } as const;
 
@@ -35,6 +35,16 @@ export const milestones = [
     date: "2025-03",
     title: "2025 AI素養教育論壇策展",
     description: "翻轉教育年度旗艦論壇策展人 & 國際分場",
+  },
+  {
+    date: "2025-11",
+    title: "教育科技展 2025",
+    description: "Vibe Coding 與創新開發力 — 大型展會專題演講",
+  },
+  {
+    date: "2025-12",
+    title: "USC 海外華語教育講座",
+    description: "南加州中文教師聯合會 — NotebookLM & TTS 海外華語教育",
   },
   {
     date: "2026-03",

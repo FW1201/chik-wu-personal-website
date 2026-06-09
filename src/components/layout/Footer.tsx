@@ -17,26 +17,24 @@ function FacebookIcon({ size = 20 }: { size?: number }) {
   );
 }
 
-const socialLinks: Array<{
+interface FooterLink {
   href: string;
   label: string;
   Icon: React.ComponentType<{ size?: number }>;
-}> = [
+}
+
+/* 個人連結 */
+const personalLinks: FooterLink[] = [
   { href: "https://github.com/FW1201", label: "GitHub", Icon: Code2 },
+  { href: "mailto:kevinwu@gtrainerdemo.jdn2023.com", label: "Email", Icon: Mail },
+];
+
+/* 數位敘事力期刊社群 */
+const journalLinks: FooterLink[] = [
   {
-    href: "https://www.facebook.com/profile.php?id=100064094937977",
+    href: "https://www.facebook.com/Journal.of.Digital.Narrative",
     label: "Facebook",
     Icon: FacebookIcon,
-  },
-  {
-    href: "https://www.threads.net/@journal_of_digital_narrative",
-    label: "Threads",
-    Icon: AtSign,
-  },
-  {
-    href: "https://flipedu.parenting.com.tw/author/1112",
-    label: "FlipEdu",
-    Icon: BookOpen,
   },
   {
     href: "https://www.instagram.com/journal_of_digital_narrative/",
@@ -44,40 +42,64 @@ const socialLinks: Array<{
     Icon: Camera,
   },
   {
+    href: "https://www.threads.net/@journal_of_digital_narrative",
+    label: "Threads",
+    Icon: AtSign,
+  },
+  {
     href: "https://www.youtube.com/@Journal_of_Digital_Narrative",
     label: "YouTube",
     Icon: Video,
   },
-  { href: "mailto:kevinwu@gtrainerdemo.jdn2023.com", label: "Email", Icon: Mail },
+  {
+    href: "https://flipedu.parenting.com.tw/author/1112",
+    label: "FlipEdu",
+    Icon: BookOpen,
+  },
 ];
+
+function LinkIcons({ links }: { links: FooterLink[] }) {
+  return (
+    <div className="flex items-center gap-4 flex-wrap">
+      {links.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target={link.href.startsWith("mailto") ? undefined : "_blank"}
+          rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+          className="text-text-tertiary hover:text-gold transition-colors"
+          aria-label={link.label}
+        >
+          <link.Icon size={20} />
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export function Footer() {
   return (
     <footer className="border-t border-border-dark bg-bg-primary">
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           <div>
             <p className="font-[family-name:var(--font-playfair)] text-lg font-medium">
               吳奇 Chi. K. Wu
             </p>
             <p className="text-sm text-text-secondary mt-1">
-              AI Education Researcher • Speaker • Developer
+              AI Education Speaker • Researcher • Developer
             </p>
+            <div className="mt-4">
+              <LinkIcons links={personalLinks} />
+            </div>
           </div>
 
-          <div className="flex items-center gap-5 flex-wrap justify-center">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                className="text-text-tertiary hover:text-text-primary transition-colors"
-                aria-label={link.label}
-              >
-                <link.Icon size={20} />
-              </a>
-            ))}
+          <div>
+            <p className="text-xs tracking-[0.2em] text-gold uppercase mb-1">
+              Journal of Digital Narrative
+            </p>
+            <p className="text-sm text-text-secondary mb-4">數位敘事力期刊</p>
+            <LinkIcons links={journalLinks} />
           </div>
         </div>
 

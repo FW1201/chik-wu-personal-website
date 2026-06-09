@@ -1,9 +1,13 @@
 import { projects, skillsOverview } from "@/data/projects";
 import { Card } from "@/components/ui/Card";
+import { CTASection } from "@/components/ui/CTASection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "氛圍開發專案",
+  description:
+    "12 個 Vibe Coding 開發專案與 92+ 個開源 AI Skills：Chrome Extension、GAS 系統、AI Studio App 與 tw-edu-skills 教育技能包。",
+  alternates: { canonical: "/projects" },
 };
 
 /* ── Category config ────────────────────────────────────── */
@@ -254,6 +258,8 @@ export default function ProjectsPage() {
           ))}
         </div>
       </section>
+
+      <CTASection />
     </main>
   );
 }

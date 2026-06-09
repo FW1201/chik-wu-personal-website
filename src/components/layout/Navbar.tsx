@@ -12,7 +12,6 @@ const navLinks = [
   { href: "/publications", label: "著作研究" },
   { href: "/projects", label: "氛圍開發專案" },
   { href: "/resources", label: "資源中心" },
-  { href: "/contact", label: "邀請演講" },
   { href: "https://www.tibame.com/teacher/20d3094c", label: "合作課程", external: true },
 ];
 
@@ -44,14 +43,24 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-opacity hover:opacity-100 ${
-                  pathname === link.href ? "opacity-100" : "opacity-60"
+                className={`text-sm transition-colors hover:text-text-primary ${
+                  pathname === link.href ? "text-gold" : "text-text-secondary"
                 }`}
               >
                 {link.label}
               </Link>
             )
           )}
+          <Link
+            href="/contact"
+            className={`text-sm px-4 py-1.5 transition-colors ${
+              pathname === "/contact"
+                ? "bg-gold-bright text-bg-primary"
+                : "bg-gold text-bg-primary hover:bg-gold-bright"
+            }`}
+          >
+            邀請演講
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -84,8 +93,8 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm transition-opacity hover:opacity-100 ${
-                    pathname === link.href ? "opacity-100" : "opacity-60"
+                  className={`text-sm transition-colors hover:text-text-primary ${
+                    pathname === link.href ? "text-gold" : "text-text-secondary"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -93,6 +102,13 @@ export function Navbar() {
                 </Link>
               )
             )}
+            <Link
+              href="/contact"
+              className="text-sm bg-gold text-bg-primary px-4 py-2 text-center hover:bg-gold-bright transition-colors"
+              onClick={() => setMobileOpen(false)}
+            >
+              邀請演講
+            </Link>
           </div>
         </div>
       )}

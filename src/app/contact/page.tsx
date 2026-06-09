@@ -29,18 +29,31 @@ import { Card } from "@/components/ui/Card";
 type ToastState = { type: "success" | "error"; message: string } | null;
 
 const topics = [
-  "AI教育應用",
-  "NotebookLM",
-  "Gemini",
-  "Vibe Coding",
-  "華語文教學",
-  "AI素養教育",
+  { name: "AI教育應用",  detail: "生成式 AI 融入教學設計與評量" },
+  { name: "AI素養教育",  detail: "K-12 AI 素養課程與論壇策展" },
+  { name: "NotebookLM",  detail: "AI 筆記本驅動的自主學習" },
+  { name: "Gemini",      detail: "Google AI 工具的教育現場應用" },
+  { name: "Vibe Coding", detail: "教師成為數位工具開發者" },
+  { name: "華語文教學",  detail: "AI 輔助華語文教材與 TBCL" },
 ];
 
 const formats = [
   { label: "工作坊",     detail: "2–6 小時" },
   { label: "專題演講",   detail: "2 小時以上" },
   { label: "線上 / 實體", detail: "皆可配合" },
+];
+
+const trustStats = [
+  { value: "154+",  label: "場演講" },
+  { value: "358.5", label: "累計小時" },
+  { value: "38+",   label: "合作機構" },
+  { value: "USC",   label: "海外講座經驗" },
+];
+
+const steps = [
+  { step: "01", title: "來信說明需求", detail: "對象、人數、主題方向與期望日期" },
+  { step: "02", title: "確認主題與形式", detail: "依需求客製演講或工作坊內容" },
+  { step: "03", title: "報價與排程", detail: "確認講師費與行政細節後排定日期" },
 ];
 
 const socialLinks = [
@@ -101,16 +114,16 @@ export default function ContactPage() {
       {toast && (
         <div className="fixed bottom-6 right-6 z-50 flex items-start gap-3 max-w-sm w-full shadow-lg"
              style={{
-               background: "#ffffff",
-               border: `1px solid ${toast.type === "success" ? "#16a34a" : "#dc2626"}`,
-               borderLeft: `4px solid ${toast.type === "success" ? "#16a34a" : "#dc2626"}`,
+               background: "#161613",
+               border: `1px solid ${toast.type === "success" ? "#4ade80" : "#f87171"}`,
+               borderLeft: `4px solid ${toast.type === "success" ? "#4ade80" : "#f87171"}`,
                borderRadius: "8px",
                padding: "16px",
              }}>
           {toast.type === "success"
-            ? <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "#16a34a" }} />
-            : <XCircle     className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "#dc2626" }} />}
-          <p className="text-sm flex-1" style={{ color: "#111111" }}>{toast.message}</p>
+            ? <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "#4ade80" }} />
+            : <XCircle     className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "#f87171" }} />}
+          <p className="text-sm flex-1" style={{ color: "#F5F2EA" }}>{toast.message}</p>
           <button onClick={dismissToast} className="flex-shrink-0 text-text-tertiary hover:text-text-primary transition-colors">
             <X className="w-4 h-4" />
           </button>
@@ -137,6 +150,35 @@ export default function ContactPage() {
           <p className="mt-4 text-lg text-white/70">
             歡迎講座邀約與合作洽詢
           </p>
+          <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
+            {trustStats.map((s) => (
+              <div key={s.label}>
+                <span className="font-[family-name:var(--font-playfair)] text-2xl font-medium text-[--color-gold-bright] block">
+                  {s.value}
+                </span>
+                <span className="text-xs text-white/50 tracking-widest uppercase">
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 邀約流程 ─────────────────────────────────────── */}
+      <section className="px-6 md:px-12 lg:px-24 py-14 border-t border-border-dark bg-bg-secondary">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((s) => (
+            <div key={s.step} className="flex items-start gap-4">
+              <span className="font-[family-name:var(--font-playfair)] text-3xl text-gold leading-none">
+                {s.step}
+              </span>
+              <div>
+                <h3 className="text-sm font-medium text-text-primary">{s.title}</h3>
+                <p className="text-xs text-text-tertiary mt-1 leading-relaxed">{s.detail}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -212,12 +254,12 @@ export default function ContactPage() {
                 <MessageSquare className="w-5 h-5 text-text-tertiary" />
                 <h3 className="text-sm text-text-tertiary uppercase tracking-wide">可談主題</h3>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="space-y-3">
                 {topics.map((topic) => (
-                  <span key={topic}
-                        className="text-xs text-text-secondary border border-border-dark rounded-full px-3 py-1.5">
-                    {topic}
-                  </span>
+                  <div key={topic.name} className="flex items-baseline justify-between gap-3">
+                    <span className="text-sm text-text-primary whitespace-nowrap">{topic.name}</span>
+                    <span className="text-xs text-text-tertiary text-right">{topic.detail}</span>
+                  </div>
                 ))}
               </div>
             </Card>

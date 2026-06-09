@@ -21,10 +21,10 @@ export const profile = {
   youtube: "Journal_of_Digital_Narrative",
   flipedu: "https://flipedu.parenting.com.tw/author/1112",
   stats: [
-    { value: 134, suffix: "+", label: "場演講" },
-    { value: 20, suffix: "", label: "篇教育文章" },
+    { value: 154, suffix: "+", label: "場演講" },
+    { value: 21, suffix: "", label: "篇教育文章" },
     { value: 8, suffix: "", label: "篇學術論文" },
-    { value: 11, suffix: "", label: "個開發專案" },
+    { value: 12, suffix: "", label: "個開發專案" },
     { value: 92, suffix: "+", label: "個 AI Skills" },
   ],
   roles: [
@@ -58,15 +58,15 @@ export const profile = {
       nameEn: "Developer",
       icon: "Code2",
       description: "Chrome Extension、Claude Skills、Vibe Coding 工具開發",
-      stat: "11 專案 · 92+ Skills",
+      stat: "12 專案 · 92+ Skills",
     },
     {
       id: "speaker",
       name: "講師",
       nameEn: "Speaker",
       icon: "Mic2",
-      description: "134+ 場演講與工作坊，涵蓋 AI 教育、Vibe Coding、素養教育",
-      stat: "134 場 · 309.5 小時",
+      description: "154+ 場演講與工作坊，涵蓋 AI 教育、Vibe Coding、素養教育",
+      stat: "154 場 · 358.5 小時",
     },
     {
       id: "learner",

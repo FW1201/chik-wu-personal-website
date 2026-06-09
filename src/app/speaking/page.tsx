@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { speakingStats } from "@/data/speaking";
 import { SpeakingTabs } from "./SpeakingTabs";
+import { CTASection } from "@/components/ui/CTASection";
 
 export const metadata: Metadata = {
   title: "演講培訓",
+  description:
+    "154+ 場 AI 教育演講與工作坊、累計 358.5 小時，合作對象涵蓋 Google for Education、國家教育研究院、親子天下等 38+ 機構。",
+  alternates: { canonical: "/speaking" },
 };
 
 const statsBar = [
@@ -78,6 +82,8 @@ export default function SpeakingPage() {
       <section className="px-6 md:px-12 lg:px-24 py-20">
         <SpeakingTabs />
       </section>
+
+      <CTASection />
     </main>
   );
 }

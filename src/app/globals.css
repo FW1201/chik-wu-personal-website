@@ -1,29 +1,32 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f5f5f5;
-  --color-bg-card: #f8f8f8;
-  --color-bg-light: #f5f5f5;
-  --color-bg-light-card: #ffffff;
+  /* 黑金深色系（v4.0）：主背景為暖黑，金色為唯一強調色 */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #111110;
+  --color-bg-card: #161613;
+  /* 「light」tokens 重定義為提升層深色表面（elevated surfaces） */
+  --color-bg-light: #141412;
+  --color-bg-light-card: #1b1b17;
 
-  --color-text-primary: #111111;
-  --color-text-secondary: #555555;
-  --color-text-tertiary: #888888;
-  --color-text-dark: #111111;
-  --color-text-dark-secondary: #555555;
+  --color-text-primary: #F5F2EA;
+  --color-text-secondary: #B5AFA3;
+  --color-text-tertiary: #807A6E;
+  /* 「dark」text tokens 跟隨提升層表面，維持淺色文字 */
+  --color-text-dark: #F5F2EA;
+  --color-text-dark-secondary: #B5AFA3;
 
-  --color-accent: #111111;
-  --color-accent-hover: #333333;
-  --color-border-dark: #e0e0e0;
-  --color-border-light: #e0e0e0;
-  --color-ring: #cccccc;
+  --color-accent: #C9A84C;
+  --color-accent-hover: #E8D080;
+  --color-border-dark: #26251f;
+  --color-border-light: #2e2d26;
+  --color-ring: #C9A84C;
 
   /* 金屬金色系 */
   --color-gold:        #C9A84C;
   --color-gold-bright: #E8D080;
   --color-gold-dark:   #8B6914;
-  --color-gold-subtle: rgba(201, 168, 76, 0.08);
+  --color-gold-subtle: rgba(201, 168, 76, 0.10);
 
   --font-heading: 'Playfair Display', 'Georgia', serif;
   --font-body: 'Inter', 'Noto Sans TC', system-ui, sans-serif;
@@ -41,6 +44,6 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(201, 168, 76, 0.30);
 }
 

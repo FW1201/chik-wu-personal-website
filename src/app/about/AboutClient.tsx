@@ -24,24 +24,24 @@ const bullets = [
   "國立臺灣師範大學 華語文教學研究所 碩士（2026）",
   "中原大學 應用華語文學系 學士",
   "Google Certified Trainer｜Gemini Academy 講師",
-  "134+ 場 AI 教育演講，橫跨台灣各縣市與 USC、PSU 國際場域",
-  "《數位敘事力期刊》創辦人 & 主編，翻轉教育 17 篇文章",
+  "154+ 場 AI 教育演講，橫跨台灣各縣市與 USC、PSU 國際場域",
+  "《數位敘事力期刊》創辦人 & 主編，翻轉教育 21 篇文章",
   "tw-edu-skills 開源 K-12 AI Skills 套組（5⭐ 7 forks）",
 ];
 
 const directoryLinks = [
-  { href: "/speaking",     label: "演講培訓",  sub: "134+ 場 · 38+ 機構" },
-  { href: "/publications", label: "著作研究",  sub: "17 篇文章 · 8 篇論文" },
+  { href: "/speaking",     label: "演講培訓",  sub: "154+ 場 · 38+ 機構" },
+  { href: "/publications", label: "著作研究",  sub: "21 篇文章 · 8 篇論文" },
   { href: "/projects",     label: "氛圍開發",  sub: "Chrome + GAS + AI App" },
   { href: "/resources",    label: "資源中心",  sub: "22 本 NotebookLM" },
   { href: "/contact",      label: "邀請演講",  sub: "工作坊 · 專題演講" },
 ];
 
 const stats = [
-  { value: "134+", label: "場演講" },
-  { value: "17",   label: "篇文章" },
+  { value: "154+", label: "場演講" },
+  { value: "21",   label: "篇文章" },
   { value: "8",    label: "篇論文" },
-  { value: "45+",  label: "Skills" },
+  { value: "92+",  label: "Skills" },
 ];
 
 export default function AboutClient({ profile }: { profile: ProfileData }) {
@@ -113,7 +113,7 @@ export default function AboutClient({ profile }: { profile: ProfileData }) {
               簡介
             </h2>
             <p className="text-text-secondary leading-relaxed text-base mb-6">
-              吳奇是一個在語言與科技之間尋找教育可能的人。從語料庫語言學的訓練，到站上 134 場演講的講台，他始終相信：認識數位科技的能與不能，是所有教學設計的起點。從師範大學的研究歲月到一次次走進教學現場的過程中，他學會了把複雜的技術，轉化為老師與學生都能握住的力量。
+              吳奇是一個在語言與科技之間尋找教育可能的人。從語料庫語言學的訓練，到站上 154 場演講的講台，他始終相信：認識數位科技的能與不能，是所有教學設計的起點。從師範大學的研究歲月到一次次走進教學現場的過程中，他學會了把複雜的技術，轉化為老師與學生都能握住的力量。
             </p>
             <ul className="space-y-2 text-sm text-text-secondary">
               {bullets.map((item) => (
