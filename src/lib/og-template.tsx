@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const ogSize = { width: 1200, height: 630 };
 
@@ -19,14 +21,22 @@ const GOLD_BRIGHT = "#E8D080";
 const BG = "#0a0a0a";
 const TEXT = "#F5F2EA";
 const TEXT_MUTED = "#A8A29E";
+const OG_BACKGROUND_PATH = join(process.cwd(), "public/images/og-background.png");
+
+async function getOgBackgroundSrc() {
+  const image = await readFile(OG_BACKGROUND_PATH);
+  return `data:image/png;base64,${image.toString("base64")}`;
+}
 
 /** 黑金 Open Graph 模板（1200×630）— 各路由 opengraph-image.tsx 共用 */
-export function buildOgImage({
+export async function buildOgImage({
   eyebrow = "jdn2023.com",
   title,
   subtitle,
   stats,
 }: OgTemplateProps) {
+  const ogBackgroundSrc = await getOgBackgroundSrc();
+
   return new ImageResponse(
     (
       <div
@@ -38,13 +48,33 @@ export function buildOgImage({
           justifyContent: "center",
           alignItems: "flex-start",
           background: BG,
-          backgroundImage:
-            "radial-gradient(circle at 85% 15%, rgba(201, 168, 76, 0.12) 0%, rgba(10, 10, 10, 0) 50%)",
           padding: "80px",
           fontFamily: "sans-serif",
           position: "relative",
+          overflow: "hidden",
         }}
       >
+        <img
+          src={ogBackgroundSrc}
+          alt=""
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(90deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.9) 47%, rgba(10,10,10,0.52) 78%, rgba(10,10,10,0.18) 100%)",
+          }}
+        />
+
         {/* 左側金色豎線 */}
         <div
           style={{

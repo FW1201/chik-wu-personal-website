@@ -95,14 +95,15 @@ export default function HomePage() {
     <main>
       {/* Hero Section */}
       <section
-        className="relative min-h-screen flex items-center justify-center bg-bg-primary px-6"
-        style={{ backgroundImage: "url('/hero-pattern.svg')", backgroundRepeat: "repeat" }}
+        className="relative min-h-screen flex items-center justify-center md:justify-start bg-bg-primary bg-[image:url('/images/home-hero.jpg')] bg-cover bg-[position:35%_45%] md:bg-[position:65%_45%] px-6 md:px-12 lg:px-24 overflow-hidden"
       >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/55" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center max-w-3xl"
+          className="relative z-10 text-center md:text-left max-w-2xl"
         >
           <p className="text-xs tracking-[0.3em] text-gold uppercase mb-6">
             {profile.tagline}
@@ -116,7 +117,7 @@ export default function HomePage() {
           <p className="mt-6 text-lg text-text-secondary max-w-xl mx-auto">
             AI × 教育講師 ・《數位敘事力期刊》主編
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center justify-center md:justify-start gap-4">
             <Link
               href="/contact"
               className="inline-block bg-gold text-bg-primary px-8 py-3 text-sm font-medium tracking-wide hover:bg-gold-bright transition-colors duration-300"
